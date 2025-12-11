@@ -1,0 +1,22 @@
+{
+  "name": "qkp-sdk",
+  "version": "0.1.0",
+  "description": "QuantumKey Protocol — SDK reference implementation for Intent, Identity, Semantic Agents and Alignment.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"(Tests will be added in future versions)\""
+  },
+  "keywords": [
+    "quantumkey",
+    "qkp",
+    "sdk",
+    "identity",
+    "intent",
+    "alignment",
+    "semantic-agents",
+    "protocol"
+  ],
+  "author": "Mihail Chiosa",
+  "license": "MIT"
+}
