@@ -1,5 +1,3 @@
-examples/README.md
-
 # QKP-SDK — Examples
 
 This folder contains **small, conceptual examples** demonstrating how the
