@@ -36,10 +36,6 @@ Intent is explicit, structured, and verifiable.
 
 No AI, no agent — only protocol primitives.
 
-
-
----
-
 Example 2 — Conceptual Agent Interaction (No AI Yet)
 
 This example illustrates how identity and intent will be composed inside an agent abstraction.
@@ -124,11 +120,6 @@ Intent precedes execution
 
 Alignment precedes scale
 
-
-
-
-
----
 
 Next Steps (Planned)
 
