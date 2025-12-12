@@ -1,11 +1,11 @@
 // QuantumKey Protocol — SDK Entry Point
-// This file re-exports all core modules in a unified interface.
+// Re-export modules with stable, lowercase names (public API)
 
-export * as Identity from "./identity/index.js";
-export * as Intent from "./intent/index.js";
-export * as QIE from "./qie/index.js";
-export * as Alignment from "./alignment/index.js";
-export * as Utils from "./utils/index.js";
+export * as identity from "./identity/index.js";
+export * as intent from "./intent/index.js";
+export * as qie from "./qie/index.js";
+export * as alignment from "./alignment/index.js";
+export * as utils from "./utils/index.js";
 
 export default {
   Identity,
