@@ -85,6 +85,10 @@ A signed container wraps any payload:
 - `publicKey` is the base64url-encoded raw Ed25519 public key.
 - `signature` is the base64url-encoded Ed25519 signature bytes.
 
+- `alg: "DEMO-SHA256"` is a non-secure demonstration mode intended only for
+  development, testing, and conformance examples.
+  It MUST NOT be used for production security.
+
 ### Canonicalization and Hashing
 Implementations MUST:
 1. Canonicalize the payload (deterministic JSON)
