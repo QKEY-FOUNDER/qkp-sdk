@@ -15,3 +15,5 @@ export function createIntent({ issuer, purpose, scope = "local", constraints = {
 export function isIntent(obj) {
   return obj && typeof obj.issuer === "string" && typeof obj.purpose === "string";
 }
+
+export { createSignedIntent, verifySignedIntent } from "./signed-intent.js";
