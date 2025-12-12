@@ -94,3 +94,18 @@ Implementations MUST:
 1. Canonicalize the payload (deterministic JSON)
 2. Compute SHA-256 over UTF-8 bytes of the canonical string
 3. Sign/verify the resulting digest using Ed25519
+
+## Signed Intent (v0.1)
+
+A Signed Intent is a cryptographically authenticated Intent.
+
+### Properties
+- `intent` (Intent)
+- `signature` (string)
+- `publicKey` (string)
+- `alg` (string)
+- `createdAt` (ISO-8601)
+
+### Rules
+- Verification MUST fail if any Intent field changes
+- Signed Intents MAY be used as inputs to governance, claims, or agent execution
