@@ -6,11 +6,3 @@ export * as intent from "./intent/index.js";
 export * as qie from "./qie/index.js";
 export * as alignment from "./alignment/index.js";
 export * as utils from "./utils/index.js";
-
-export default {
-  Identity,
-  Intent,
-  QIE,
-  Alignment,
-  Utils
-};
