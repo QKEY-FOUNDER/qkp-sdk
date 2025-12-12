@@ -88,3 +88,14 @@ Two intents with the same semantic content but different key order.
 ### Requirement
 - Hash MUST be identical for both (canonical JSON).
 - If any value changes, hash MUST change.
+
+---
+
+## Case C6 — Ed25519 Signature Validity
+
+### Steps
+1. Generate an Ed25519 keypair
+2. Sign a payload
+3. Verify signature => MUST be true
+4. Modify payload
+5. Verify signature => MUST be false
