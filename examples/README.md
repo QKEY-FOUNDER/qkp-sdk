@@ -167,4 +167,6 @@ A living architecture for aligned intelligence
 
 - `conformance-c6.js` — Ed25519 signature validity (sign + verify + tamper)
 
+- `conformance-c7.js` — Signed Intent validity (intent + signature + tamper)
+
 - `conformance-c8.js` — Signed Claim validity (issuer/subject/type + expiry)
