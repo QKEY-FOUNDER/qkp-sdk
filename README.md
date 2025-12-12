@@ -267,21 +267,18 @@ QKP-SDK is released under the MIT License.
 
 ---
 
-🌟 Vision
+⭐ Vision
 
-The QuantumKey Protocol is not simply a technology —
-it is the foundation of a harmonic digital ecosystem where:
+The QuantumKey Protocol is not simply a technology – it is the foundation of a harmonic digital ecosystem where:
 
-Identity is presence
+Where:
+- Identity is presence
+- Information is meaning
+- Intelligence is alignment
+- Intent is the fabric between agents
 
-Information is meaning
-
-Intelligence is alignment
-
-Intent is the fabric between agents
-
-
-This SDK is the first step in manifesting that architecture.
+This SDK is the first step in manifesting that architecture,
+providing interoperable primitives for identity, intent, and alignment.
 
 
 ---
