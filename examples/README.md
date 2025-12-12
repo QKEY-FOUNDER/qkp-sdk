@@ -102,15 +102,6 @@ console.log(result); // expected: false
 Important:
 This is a placeholder — alignment logic will evolve with the protocol.
 
-
----
-
-- `conformance-c5.js` — Deterministic hashing (canonical JSON + SHA-256)
-
----
-
-- `conformance-c6.js` — Ed25519 signature validity (sign + verify + tamper)
-
 ---
 
 Status
@@ -171,3 +162,9 @@ A living architecture for aligned intelligence
 - `conformance-c1-c2.js` — Identity + Intent
 - `conformance-c3.js` — QIE container + hash semantics
 - `conformance-c4.js` — Alignment check
+
+- `conformance-c5.js` — Deterministic hashing (canonical JSON + SHA-256)
+
+- `conformance-c6.js` — Ed25519 signature validity (sign + verify + tamper)
+
+- `conformance-c8.js` — Signed Claim validity (issuer/subject/type + expiry)
