@@ -22,3 +22,4 @@ jobs:
           node examples/conformance-c3.js
           node examples/conformance-c4.js
           node examples/conformance-c5.js
+          node examples/conformance-c6.js
