@@ -63,3 +63,17 @@ An implementation is QKP-compatible if it:
 These may be added in later versions.
 
 Conformance cases are defined in `docs/conformance.md`.
+
+## 1.5 Deterministic Hashing (v0.2)
+- QIE hashing MUST be computed from a canonicalized JSON representation of the Intent.
+- Hash algorithm: SHA-256.
+- Any change to Intent fields MUST change the resulting hash.
+
+## 1.6 Signed Container (Draft v0.1)
+A signed container wraps any payload:
+- `version`
+- `payload`
+- `signature`
+- `publicKey`
+- `createdAt`
+- `alg`
