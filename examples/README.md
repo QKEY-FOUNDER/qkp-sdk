@@ -109,6 +109,10 @@ This is a placeholder — alignment logic will evolve with the protocol.
 
 ---
 
+- `conformance-c6.js` — Ed25519 signature validity (sign + verify + tamper)
+
+---
+
 Status
 
 🧪 Experimental
