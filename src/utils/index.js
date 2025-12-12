@@ -1,9 +1,7 @@
-// QuantumKey SDK — Utility helpers
-
-export function deepClone(obj) {
-  return JSON.parse(JSON.stringify(obj));
+export function nowISO() {
+  return new Date().toISOString();
 }
 
-export function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+export function assert(condition, message) {
+  if (!condition) throw new Error(message || "Assertion failed");
 }
