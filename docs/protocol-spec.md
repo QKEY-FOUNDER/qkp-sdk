@@ -61,3 +61,5 @@ An implementation is QKP-compatible if it:
 - On-chain governance execution
 - Cryptographic signature suites
 These may be added in later versions.
+
+Conformance cases are defined in `docs/conformance.md`.
