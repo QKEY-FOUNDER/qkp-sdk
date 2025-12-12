@@ -1,27 +1,48 @@
-# QKP-SDK — Examples
+# QKP-SDK — Conceptual Examples
 
-This folder contains **small, conceptual examples** demonstrating how the
-core primitives of the **QuantumKey Protocol SDK (QKP-SDK)** are intended
-to be used together.
+This folder contains **conceptual, non-production examples** illustrating how the core primitives of the **QuantumKey Protocol SDK (QKP-SDK)** are intended to relate to each other.
 
-> ⚠️ Important  
-> These examples are **not production-ready**.  
-> They describe the *grammar* and *flow* of the protocol, not a finalized implementation.
+These examples are **not runnable implementations**.  
+They are **semantic flows**, designed to clarify *order*, *responsibility*, and *alignment* within the protocol.
 
 ---
 
-## Example 1 — Identity + Intent (Minimal Flow)
+## ⚠️ Important
 
-This first example shows how an identity and an intent can be created and
-validated within the protocol.
+- These examples are **illustrative only**
+- They describe **protocol grammar**, not final APIs
+- No cryptography, no networking, no agents are assumed
+- Code snippets express *intentional structure*, not execution
+
+Think of this folder as **protocol diagrams written in code form**.
+
+---
+
+## Core Principle Illustrated
+
+> **Identity exists before action.  
+> Intent exists before execution.  
+> Alignment exists before automation.**
+
+---
+
+## Example 1 — Identity → Intent (Minimal Flow)
+
+This example shows the **minimum valid sequence** in the protocol:
+1. An identity is established
+2. An intent is declared
+3. The intent is validated in context
 
 ```js
-import { createIdentityKeyPair } from "../src/identity/index.js";
-import { validateIntent } from "../src/intent/index.js";
+import { createIdentity } from "@qkp/identity";
+import { validateIntent } from "@qkp/intent";
 
-const identity = createIdentityKeyPair();
+const identity = createIdentity({
+  subject: "human",
+  continuity: "persistent"
+});
 
-const intent = validateIntent({
+const intent = validateIntent(identity, {
   action: "hello",
   context: "example"
 });
@@ -30,115 +51,118 @@ console.log(identity, intent);
 
 What this illustrates
 
-Identity exists before action.
+Identity precedes any action
 
-Intent is explicit, structured, and verifiable.
+Intent is explicit and structured
 
-No AI, no agent — only protocol primitives.
+No agents, no AI — only protocol primitives
 
-Example 2 — Conceptual Agent Interaction (No AI Yet)
 
-This example illustrates how identity and intent will be composed inside an agent abstraction.
 
-import { identity } from "qkp-sdk";
-import { intent } from "qkp-sdk";
+---
 
-const agent = identity.createAgent({
-  name: "Alice",
-  publicKey: "example-public-key"
+Example 2 — Identity + Intent → Message (QIE)
+
+This example introduces the Quantum Intent Envelope (QIE).
+
+import { createIdentity } from "@qkp/identity";
+import { declareIntent } from "@qkp/intent";
+import { createMessage } from "@qkp/qie";
+
+const identity = createIdentity({ subject: "agent" });
+
+const intent = declareIntent(identity, {
+  goal: "share-information",
+  scope: "public"
 });
 
-const goal = intent.define({
-  purpose: "cooperate",
-  domain: "knowledge-sharing"
+const message = createMessage({
+  identity,
+  intent,
+  payload: {
+    text: "This message carries declared intent"
+  }
 });
-
-agent.setIntent(goal);
-
-console.log(agent);
 
 What this illustrates
 
-An agent is an identity with continuity.
+Messages are not neutral containers
 
-Intent is attached, not inferred.
+Every message carries declared intent
 
-Alignment is explicit, not emergent by accident.
+Intent is bound to identity at creation time
 
 
 
 ---
 
-Example 3 — Message Grammar (QIE — Quantum Intent Envelope)
+Example 3 — Alignment Check (Pre-Agent)
 
-This example shows the conceptual shape of a QIE message, the basic communication unit of the QuantumKey Protocol.
+This example shows how alignment is evaluated before autonomy.
 
-const qieMessage = {
-  from: "agent:alice",
-  to: "agent:bob",
-  intent: {
-    action: "share",
-    object: "document",
-    alignment: "cooperative"
-  },
-  timestamp: Date.now(),
-  signature: "<cryptographic-signature>"
-};
+import { checkAlignment } from "@qkp/alignment";
 
-console.log(qieMessage);
+const alignment = checkAlignment({
+  intent,
+  context: "shared-space",
+  policy: "non-exploitative"
+});
+
+if (!alignment.ok) {
+  throw new Error("Intent not aligned with context");
+}
 
 What this illustrates
 
-Messages carry intent + context, not just data.
+Alignment is a gate, not a reaction
 
-Cryptographic identity anchors meaning.
+Automation is conditional
 
-Alignment becomes a first-class field.
+Ethics are structural, not external
 
-
-
----
-
-Design Philosophy Behind These Examples
-
-These examples intentionally:
-
-Avoid frameworks
-
-Avoid AI abstractions
-
-Avoid network assumptions
-
-
-They focus on clarity of protocol grammar, not implementation detail.
-
-> The QuantumKey Protocol is built so that:
-
-Meaning precedes computation
-
-Intent precedes execution
-
-Alignment precedes scale
-
-
-Next Steps (Planned)
-
-Future examples will include:
-
-Alignment scoring
-
-DAO-based intent validation
-
-Multi-agent negotiation
-
-Semantic audit trails
-
-
-Until then, these examples serve as conceptual scaffolding for contributors, researchers, and builders.
 
 
 ---
 
-© QuantumKey Protocol — Consciousness-aligned digital infrastructure.
+What Is Not Shown Here
+
+These examples intentionally omit:
+
+Cryptographic implementations
+
+Networking or transport layers
+
+AI or agent logic
+
+Economic incentives
+
+DAO mechanics
+
+
+Each of those belongs to separate layers of the protocol.
+
 
 ---
+
+Relationship to the Specifications
+
+These examples are derived from:
+
+Protocol Message Formats
+
+Identity & Intent specifications
+
+Alignment and governance primitives
+
+
+They should be read together with the docs, not in isolation.
+
+
+---
+
+Final Note
+
+If you can understand these examples,
+you understand the spine of the QuantumKey Protocol.
+
+Everything else is implementation.
