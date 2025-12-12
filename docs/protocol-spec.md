@@ -109,3 +109,27 @@ A Signed Intent is a cryptographically authenticated Intent.
 ### Rules
 - Verification MUST fail if any Intent field changes
 - Signed Intents MAY be used as inputs to governance, claims, or agent execution
+
+
+## Claim (v0.1)
+
+A Claim is a statement issued by an issuer about a subject.
+
+### Properties
+- `id` (string)
+- `issuer` (string)
+- `subject` (string)
+- `type` (string)
+- `issuedAt` (ISO-8601)
+- `expiresAt` (ISO-8601, optional)
+- `evidence` (array, optional)
+- `data` (object, optional)
+
+## Signed Claim (v0.1)
+
+A Signed Claim is a cryptographically authenticated Claim.
+
+### Rules
+- Verification MUST fail if any Claim field changes
+- If `expiresAt` is present, verification MUST fail after expiry (unless explicitly allowed by the verifier)
+- `issuer` SHOULD correspond to the signing key owner (policy-layer decision)
