@@ -1,5 +1,7 @@
 ✅ QKP-SDK — QuantumKey Protocol Software Development Kit
 
+[![QKP Conformance](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml/badge.svg)](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml)
+
 A foundational toolkit for building with Intent, Identity, Semantic Agents and Alignment Primitives.
 
 
