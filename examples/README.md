@@ -1,168 +1,161 @@
-# QKP-SDK — Conceptual Examples
+---
 
-This folder contains **conceptual, non-production examples** illustrating how the core primitives of the **QuantumKey Protocol SDK (QKP-SDK)** are intended to relate to each other.
+# QKP-SDK — Examples
 
-These examples are **not runnable implementations**.  
-They are **semantic flows**, designed to clarify *order*, *responsibility*, and *alignment* within the protocol.
+This folder contains **minimal, illustrative examples** showing how the QuantumKey Protocol SDK
+is intended to be used.
+
+These examples are **conceptual and non-final**.  
+They exist to demonstrate *structure, flow and intent* — not production-ready logic.
 
 ---
 
-## ⚠️ Important
+## Purpose of the Examples
 
-- These examples are **illustrative only**
-- They describe **protocol grammar**, not final APIs
-- No cryptography, no networking, no agents are assumed
-- Code snippets express *intentional structure*, not execution
+The QKP-SDK is not a traditional SDK focused only on execution.
+It is an **alignment-first protocol**.
 
-Think of this folder as **protocol diagrams written in code form**.
+These examples aim to show:
 
----
+- How **intent** is declared
+- How **identity** is represented
+- How **messages** are structured (QIE)
+- How **alignment checks** could occur
 
-## Core Principle Illustrated
-
-> **Identity exists before action.  
-> Intent exists before execution.  
-> Alignment exists before automation.**
+Think of them as **reference rituals**, not finished spells.
 
 ---
 
-## Example 1 — Identity → Intent (Minimal Flow)
-
-This example shows the **minimum valid sequence** in the protocol:
-1. An identity is established
-2. An intent is declared
-3. The intent is validated in context
+## Example 1 — Identity Creation (Conceptual)
 
 ```js
-import { createIdentity } from "@qkp/identity";
-import { validateIntent } from "@qkp/intent";
+import { createIdentity } from "../src/identity";
 
 const identity = createIdentity({
-  subject: "human",
-  continuity: "persistent"
+  type: "human",
+  intent: "collaborate",
+  presence: "conscious"
 });
 
-const intent = validateIntent(identity, {
-  action: "hello",
-  context: "example"
-});
+console.log(identity);
 
-console.log(identity, intent);
+What this demonstrates:
 
-What this illustrates
+Identity is not just a keypair
 
-Identity precedes any action
+It carries intent and context
 
-Intent is explicit and structured
-
-No agents, no AI — only protocol primitives
+Cryptography is secondary to alignment
 
 
 
 ---
 
-Example 2 — Identity + Intent → Message (QIE)
+Example 2 — Declaring Intent
 
-This example introduces the Quantum Intent Envelope (QIE).
+import { declareIntent } from "../src/intent";
 
-import { createIdentity } from "@qkp/identity";
-import { declareIntent } from "@qkp/intent";
-import { createMessage } from "@qkp/qie";
-
-const identity = createIdentity({ subject: "agent" });
-
-const intent = declareIntent(identity, {
-  goal: "share-information",
-  scope: "public"
+const intent = declareIntent({
+  purpose: "knowledge-sharing",
+  scope: "open",
+  constraints: ["non-extractive", "consensual"]
 });
 
+console.log(intent);
+
+Key idea: Intent is explicit, structured and verifiable — not implicit.
+
+
+---
+
+Example 3 — QIE Message Format
+
+import { createMessage } from "../src/qie";
+
 const message = createMessage({
-  identity,
-  intent,
+  from: "identity:human",
+  to: "identity:agent",
+  intent: "explain-protocol",
   payload: {
-    text: "This message carries declared intent"
+    topic: "QuantumKey Protocol",
+    level: "introductory"
   }
 });
 
-What this illustrates
+console.log(message);
 
-Messages are not neutral containers
-
-Every message carries declared intent
-
-Intent is bound to identity at creation time
-
+QIE (Quantum Intent Envelope)
+is the backbone of communication in QKP.
 
 
 ---
 
-Example 3 — Alignment Check (Pre-Agent)
+Example 4 — Alignment Check (Stub)
 
-This example shows how alignment is evaluated before autonomy.
+import { checkAlignment } from "../src/alignment";
 
-import { checkAlignment } from "@qkp/alignment";
-
-const alignment = checkAlignment({
-  intent,
-  context: "shared-space",
-  policy: "non-exploitative"
+const result = checkAlignment({
+  intent: "collaborate",
+  action: "extract-value"
 });
 
-if (!alignment.ok) {
-  throw new Error("Intent not aligned with context");
-}
+console.log(result); // expected: false
 
-What this illustrates
+Important:
+This is a placeholder — alignment logic will evolve with the protocol.
 
-Alignment is a gate, not a reaction
 
-Automation is conditional
+---
 
-Ethics are structural, not external
+Status
+
+🧪 Experimental
+
+🧱 Skeleton-level
+
+🧭 Directional, not final
+
+
+These examples will grow as:
+
+the protocol matures
+
+governance solidifies
+
+real implementations emerge
 
 
 
 ---
 
-What Is Not Shown Here
+Philosophy Reminder
 
-These examples intentionally omit:
-
-Cryptographic implementations
-
-Networking or transport layers
-
-AI or agent logic
-
-Economic incentives
-
-DAO mechanics
+> In QuantumKey, code is not neutral.
+Every function encodes a choice.
+Every message carries responsibility.
 
 
-Each of those belongs to separate layers of the protocol.
+
+Use these examples as guides, not rules.
 
 
 ---
 
-Relationship to the Specifications
+Next Steps
 
-These examples are derived from:
+Add real cryptographic primitives
 
-Protocol Message Formats
+Add tests for intent validation
 
-Identity & Intent specifications
+Connect examples to real agents
 
-Alignment and governance primitives
+Evolve alignment from philosophy to mechanism
 
-
-They should be read together with the docs, not in isolation.
 
 
 ---
 
-Final Note
+QuantumKey Protocol
+A living architecture for aligned intelligence
 
-If you can understand these examples,
-you understand the spine of the QuantumKey Protocol.
-
-Everything else is implementation.
+---
