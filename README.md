@@ -285,3 +285,6 @@ This SDK is the first step in manifesting that architecture.
 
 
 ---
+
+## Documentation
+See `docs/index.md` and `docs/protocol-spec.md`.
