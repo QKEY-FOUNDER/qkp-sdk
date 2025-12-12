@@ -77,3 +77,14 @@ If `intent.purpose` changes, `hash` MUST change.
 
 ### Semantics Check
 If `action.purpose !== intent.purpose`, then `aligned` MUST be `false`.
+
+---
+
+## Case C5 — Deterministic QIE Hash (v0.2)
+
+### Input
+Two intents with the same semantic content but different key order.
+
+### Requirement
+- Hash MUST be identical for both (canonical JSON).
+- If any value changes, hash MUST change.
