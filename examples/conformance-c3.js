@@ -16,3 +16,5 @@ const i2 = { ...i, purpose: "different_purpose" };
 const encoded2 = qie.encodeIntent(i2);
 
 console.log("C3 Hash changed:", encoded.hash !== encoded2.hash);
+
+process.exit(0);
