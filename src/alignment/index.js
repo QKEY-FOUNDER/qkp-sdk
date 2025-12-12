@@ -1,10 +1,10 @@
-// QuantumKey SDK — Alignment Module (skeleton)
-// Placeholder for future harmonic / alignment scoring logic
+export function checkAlignment({ intent, action }) {
+  if (!intent || !action) {
+    throw new Error("Intent and action are required");
+  }
 
-export function computeAlignmentScore(input = {}) {
   return {
-    score: 0.0,
-    details: "Alignment computation placeholder — coming soon.",
-    received: input
+    aligned: action.purpose === intent.purpose,
+    checkedAt: new Date().toISOString(),
   };
 }
