@@ -14,3 +14,5 @@ const i = intent.createIntent({
 
 console.log("C1 Identity:", alice);
 console.log("C2 Intent:", i);
+
+process.exit(0);
