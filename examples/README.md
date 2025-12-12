@@ -157,3 +157,9 @@ QuantumKey Protocol
 A living architecture for aligned intelligence
 
 ---
+
+## Conformance Examples
+
+- `conformance-c1-c2.js` — Identity + Intent
+- `conformance-c3.js` — QIE container + hash semantics
+- `conformance-c4.js` — Alignment check
