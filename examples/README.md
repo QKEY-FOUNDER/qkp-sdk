@@ -1,5 +1,3 @@
----
-
 # QKP-SDK — Examples
 
 This folder contains **minimal, illustrative examples** showing how the QuantumKey Protocol SDK
@@ -28,7 +26,7 @@ Think of them as **reference rituals**, not finished spells.
 
 ## Example 1 — Identity Creation (Conceptual)
 
-```js
+```js```
 import { createIdentity } from "../src/identity";
 
 const identity = createIdentity({
