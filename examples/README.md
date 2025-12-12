@@ -105,6 +105,10 @@ This is a placeholder — alignment logic will evolve with the protocol.
 
 ---
 
+- `conformance-c5.js` — Deterministic hashing (canonical JSON + SHA-256)
+
+---
+
 Status
 
 🧪 Experimental
