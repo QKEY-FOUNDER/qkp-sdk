@@ -1,16 +1,20 @@
-// QuantumKey SDK — QIE (Quantum Intent Envelope) Module (skeleton)
+export function encodeIntent(intent) {
+  if (!intent || !intent.purpose) {
+    throw new Error("Invalid intent");
+  }
 
-export function encodeQIE(data = {}) {
   return {
-    encoded: Buffer.from(JSON.stringify(data)).toString("base64"),
-    meta: { version: "0.1", type: "qie" }
+    qieVersion: "0.1",
+    hash: simpleHash(JSON.stringify(intent)),
+    intent,
   };
 }
 
-export function decodeQIE(str = "") {
-  try {
-    return JSON.parse(Buffer.from(str, "base64").toString("utf8"));
-  } catch {
-    return { error: "Invalid QIE string" };
+function simpleHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
   }
+  return `qie_${Math.abs(hash)}`;
 }
