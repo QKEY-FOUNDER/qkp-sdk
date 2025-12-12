@@ -69,11 +69,24 @@ Conformance cases are defined in `docs/conformance.md`.
 - Hash algorithm: SHA-256.
 - Any change to Intent fields MUST change the resulting hash.
 
-## 1.6 Signed Container (Draft v0.1)
+## Signed Container (v0.1)
+
 A signed container wraps any payload:
-- `version`
-- `payload`
-- `signature`
-- `publicKey`
-- `createdAt`
-- `alg`
+
+- `version` (string)
+- `payload` (object)
+- `signature` (string, base64url)
+- `publicKey` (string, base64url)
+- `createdAt` (ISO-8601 string)
+- `alg` (string)
+
+### Algorithms
+- `alg: "ED25519"` indicates an Ed25519 signature over `SHA-256(canonical(payload))`.
+- `publicKey` is the base64url-encoded raw Ed25519 public key.
+- `signature` is the base64url-encoded Ed25519 signature bytes.
+
+### Canonicalization and Hashing
+Implementations MUST:
+1. Canonicalize the payload (deterministic JSON)
+2. Compute SHA-256 over UTF-8 bytes of the canonical string
+3. Sign/verify the resulting digest using Ed25519
