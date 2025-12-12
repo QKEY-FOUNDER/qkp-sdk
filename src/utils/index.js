@@ -1,3 +1,9 @@
+// Node polyfill for atob/btoa (needed for base64url helpers)
+if (typeof globalThis.atob !== "function" || typeof globalThis.btoa !== "function") {
+  const { Buffer } = await import("node:buffer");
+  globalThis.btoa = (bin) => Buffer.from(bin, "binary").toString("base64");
+  globalThis.atob = (b64) => Buffer.from(b64, "base64").toString("binary");
+}
 export function nowISO() {
   return new Date().toISOString();
 }
