@@ -110,3 +110,14 @@ Two intents with the same semantic content but different key order.
 3. Verify signature => MUST be true
 4. Modify intent content
 5. Verify signature => MUST be false
+
+---
+
+## Case C8 — Signed Claim Validity (incl. expiry)
+
+### Steps
+1. Create a Claim with issuer, subject, type
+2. Sign it as a SignedClaim (ED25519)
+3. Verify => MUST be true
+4. Modify claim data => Verify MUST be false
+5. Create an expired claim => Verify MUST be false (unless allowExpired=true)
