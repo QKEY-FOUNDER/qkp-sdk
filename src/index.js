@@ -7,3 +7,4 @@ export * as qie from "./qie/index.js";
 export * as alignment from "./alignment/index.js";
 export * as utils from "./utils/index.js";
 export * as crypto from "./crypto/index.js";
+export * as claims from "./claims/index.js";
