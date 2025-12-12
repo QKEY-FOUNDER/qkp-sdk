@@ -99,3 +99,14 @@ Two intents with the same semantic content but different key order.
 3. Verify signature => MUST be true
 4. Modify payload
 5. Verify signature => MUST be false
+
+---
+
+## Case C7 — Signed Intent Validity
+
+### Steps
+1. Create an Intent
+2. Sign it as a SignedIntent
+3. Verify signature => MUST be true
+4. Modify intent content
+5. Verify signature => MUST be false
