@@ -1,5 +1,9 @@
 # QuantumKey Protocol (QKP) — Specification (Draft)
 
+> **Protocol Version:** v0.1.0  
+> This specification defines the frozen core primitives of the QuantumKey Protocol.
+> Any backward-incompatible change requires a new major version.
+
 Status: Draft  
 SDK: QKP-SDK  
 Scope: Defines the minimal interoperable primitives for Identity, Intent, QIE and Alignment.
