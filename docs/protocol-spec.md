@@ -133,3 +133,9 @@ A Signed Claim is a cryptographically authenticated Claim.
 - Verification MUST fail if any Claim field changes
 - If `expiresAt` is present, verification MUST fail after expiry (unless explicitly allowed by the verifier)
 - `issuer` SHOULD correspond to the signing key owner (policy-layer decision)
+
+## Revocation and Trust Policy (v0.1)
+
+Revocation allows issuers to invalidate previously issued claims.
+
+Trust Policies define local acceptance rules and are NOT part of cryptographic verification.
