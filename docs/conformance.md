@@ -121,3 +121,14 @@ Two intents with the same semantic content but different key order.
 3. Verify => MUST be true
 4. Modify claim data => Verify MUST be false
 5. Create an expired claim => Verify MUST be false (unless allowExpired=true)
+
+---
+
+## Case C9 — Claim Revocation and Trust Policy
+
+### Steps
+1. Create and sign a Claim
+2. Verify claim => MUST be true
+3. Create and sign a Revocation for the claim
+4. Verify claim with revocation => MUST be false
+5. Apply a trust policy that only accepts trusted issuers
