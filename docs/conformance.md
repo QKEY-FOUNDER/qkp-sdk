@@ -155,3 +155,13 @@ Two intents with the same semantic content but different key order.
 4. Verify contract => MUST be allowed
 5. Revoke the claim => verify MUST be denied
 6. Violate intent constraints => verify MUST be denied
+
+---
+
+## Case C12 — Audited Execution & Replay Protection
+
+### Steps
+1. Execute a valid ExecutionContract
+2. Receive a Signed Execution Receipt
+3. Verify receipt => MUST be valid
+4. Re-execute same contract => MUST be denied
