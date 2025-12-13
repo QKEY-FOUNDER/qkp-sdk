@@ -165,3 +165,14 @@ Two intents with the same semantic content but different key order.
 2. Receive a Signed Execution Receipt
 3. Verify receipt => MUST be valid
 4. Re-execute same contract => MUST be denied
+
+---
+
+## Case C13 — Accountability Graph (NodeRef + Edge validation)
+
+### Steps
+1. Create a SignedIntent and an ExecutionContract and an ExecutionReceipt
+2. Create NodeRefs for each using deterministic hashes
+3. Create edges: SignedIntent AUTHORIZES ExecutionContract; ExecutionContract PRODUCES ExecutionReceipt
+4. Validate edges by recomputing hashes from the referenced objects => MUST be true
+5. Tamper a referenced object => validation MUST be false
