@@ -151,3 +151,12 @@ A vote records a choice (YES/NO/ABSTAIN) and weight for a proposal.
 ### Signed Proposal / Signed Vote
 - MUST fail verification if any field changes
 - Tally MUST ignore invalid signatures and mismatched proposalId
+
+## Execution Contract (v0.1)
+
+Execution contracts describe an action that an agent may execute under a SignedIntent and accepted Claims.
+
+Verification MUST:
+- verify SignedIntent cryptographically
+- ensure required claims are trusted and not revoked
+- enforce declared intent constraints (minimal v0.1)
