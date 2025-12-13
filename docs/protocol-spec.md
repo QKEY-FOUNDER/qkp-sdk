@@ -4,7 +4,7 @@
 > This specification defines the frozen core primitives of the QuantumKey Protocol.
 > Any backward-incompatible change requires a new major version.
 
-Status: Draft  
+Status: Draft (Frozen Core v0.1.0)
 SDK: QKP-SDK  
 Scope: Defines the minimal interoperable primitives for Identity, Intent, QIE and Alignment.
 
