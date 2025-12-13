@@ -176,3 +176,5 @@ A living architecture for aligned intelligence
 - `conformance-c10.js` — Governance primitives (signed proposal + signed votes + tally)
 
 - `conformance-c11.js` — Execution contracts (SignedIntent + Claims + Revocation + Constraints)
+
+- `conformance-c12.js` — Audited execution and replay protection
