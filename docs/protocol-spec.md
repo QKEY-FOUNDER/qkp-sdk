@@ -153,6 +153,19 @@ A vote records a choice (YES/NO/ABSTAIN) and weight for a proposal.
 - Tally MUST ignore invalid signatures and mismatched proposalId
 
 ## Execution Contract (v0.1)
+ExecutionContract {
+  version: "0.1",
+  contractId: string,
+  agentId: string,
+  action: {
+    type: string,
+    params: object
+  },
+  signedIntent: SignedIntent,
+  requiredClaims?: string[],     // types of claims required
+  policy?: object,               // local policy hints
+  createdAt: ISODateTime
+}
 
 Execution contracts describe an action that an agent may execute under a SignedIntent and accepted Claims.
 
