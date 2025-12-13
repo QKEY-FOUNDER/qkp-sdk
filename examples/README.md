@@ -174,3 +174,5 @@ A living architecture for aligned intelligence
 - `conformance-c9.js` — Claim revocation and trust policy (issuer revocation + policy-based acceptance)
 
 - `conformance-c10.js` — Governance primitives (signed proposal + signed votes + tally)
+
+- `conformance-c11.js` — Execution contracts (SignedIntent + Claims + Revocation + Constraints)
