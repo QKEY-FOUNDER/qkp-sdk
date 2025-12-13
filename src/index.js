@@ -10,3 +10,4 @@ export * as crypto from "./crypto/index.js";
 export * as claims from "./claims/index.js";
 export * as governance from "./governance/index.js";
 export * as agents from "./agents/index.js";
+export * as graph from "./graph/index.js";
