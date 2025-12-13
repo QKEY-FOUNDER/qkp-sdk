@@ -170,3 +170,5 @@ A living architecture for aligned intelligence
 - `conformance-c7.js` — Signed Intent validity (intent + signature + tamper)
 
 - `conformance-c8.js` — Signed Claim validity (issuer/subject/type + expiry)
+
+- `conformance-c9.js` — Claim revocation and trust policy (issuer revocation + policy-based acceptance)
