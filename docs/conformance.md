@@ -143,3 +143,15 @@ Two intents with the same semantic content but different key order.
 3. Create multiple SignedVotes for the proposal
 4. Verify votes and tally => totals MUST match expected
 5. Tamper a vote => it MUST be ignored by tally
+
+---
+
+## Case C11 — Execution Contract (SignedIntent + Claims + Policy)
+
+### Steps
+1. Create a SignedIntent
+2. Create a SignedClaim required for execution
+3. Build an ExecutionContract requiring that claim type
+4. Verify contract => MUST be allowed
+5. Revoke the claim => verify MUST be denied
+6. Violate intent constraints => verify MUST be denied
