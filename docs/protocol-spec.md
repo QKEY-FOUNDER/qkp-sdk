@@ -183,8 +183,6 @@ Verification MUST:
 - verify SignedIntent cryptographically
 - ensure required claims are trusted and not revoked
 - enforce declared intent constraints (minimal v0.1)
-
-## Audit and Accountability (v0.1)
 ExecutionReceipt {
   version: "0.1",
   receiptId: string,
@@ -196,3 +194,18 @@ ExecutionReceipt {
 }
 Execution receipts provide verifiable proof of execution.
 Replay protection MUST prevent unintended re-execution of the same contract.
+
+## Accountability Graphs (v0.1.x)
+
+NodeRef {
+  kind: "SignedIntent" | "SignedClaim" | "SignedProposal" | "SignedVote" | "ExecutionContract" | "ExecutionReceipt" | "SignedRevocation",
+  id: string,        // natural id (contractId, claim.id, proposal.id, receiptId, etc.)
+  hash: string       // sha256(canonical(payload-or-object))
+}
+
+Edge {
+  type: "AUTHORIZES" | "REQUIRES" | "PRODUCES" | "REVOKES" | "VOTES_ON" | "DERIVES",
+  from: NodeRef,
+  to: NodeRef,
+  createdAt: ISODateTime
+}
