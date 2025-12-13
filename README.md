@@ -5,6 +5,8 @@
 > **Status:** Stable Protocol — v0.1.0  
 > This release freezes all core primitives and semantics defined in the QuantumKey Protocol.
 
+**Latest release:** v0.1.0
+
 A foundational toolkit for building with Intent, Identity, Semantic Agents and Alignment Primitives.
 
 
