@@ -179,3 +179,16 @@ Verification MUST:
 - verify SignedIntent cryptographically
 - ensure required claims are trusted and not revoked
 - enforce declared intent constraints (minimal v0.1)
+
+## Audit and Accountability (v0.1)
+ExecutionReceipt {
+  version: "0.1",
+  receiptId: string,
+  contractId: string,
+  contractHash: string,
+  status: "EXECUTED" | "FAILED",
+  output?: object,
+  executedAt: ISODateTime
+}
+Execution receipts provide verifiable proof of execution.
+Replay protection MUST prevent unintended re-execution of the same contract.
