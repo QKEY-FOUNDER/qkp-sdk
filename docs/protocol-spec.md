@@ -135,7 +135,13 @@ A Signed Claim is a cryptographically authenticated Claim.
 - `issuer` SHOULD correspond to the signing key owner (policy-layer decision)
 
 ## Revocation and Trust Policy (v0.1)
-
+Revocation {
+  version: "0.1",
+  targetClaimId: string,
+  issuer: string,
+  reason?: string,
+  revokedAt: ISODateTime
+}
 Revocation allows issuers to invalidate previously issued claims.
 
 Trust Policies define local acceptance rules and are NOT part of cryptographic verification.
