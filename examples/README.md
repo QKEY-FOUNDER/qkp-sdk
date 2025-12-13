@@ -172,3 +172,5 @@ A living architecture for aligned intelligence
 - `conformance-c8.js` — Signed Claim validity (issuer/subject/type + expiry)
 
 - `conformance-c9.js` — Claim revocation and trust policy (issuer revocation + policy-based acceptance)
+
+- `conformance-c10.js` — Governance primitives (signed proposal + signed votes + tally)
