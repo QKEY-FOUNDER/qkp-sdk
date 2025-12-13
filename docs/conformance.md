@@ -132,3 +132,14 @@ Two intents with the same semantic content but different key order.
 3. Create and sign a Revocation for the claim
 4. Verify claim with revocation => MUST be false
 5. Apply a trust policy that only accepts trusted issuers
+
+---
+
+## Case C10 — Governance (Signed Proposal + Signed Votes + Tally)
+
+### Steps
+1. Create a Proposal and sign it
+2. Verify SignedProposal => MUST be true
+3. Create multiple SignedVotes for the proposal
+4. Verify votes and tally => totals MUST match expected
+5. Tamper a vote => it MUST be ignored by tally
