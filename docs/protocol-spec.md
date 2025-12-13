@@ -139,3 +139,15 @@ A Signed Claim is a cryptographically authenticated Claim.
 Revocation allows issuers to invalidate previously issued claims.
 
 Trust Policies define local acceptance rules and are NOT part of cryptographic verification.
+
+## Governance (v0.1)
+
+### Proposal
+A proposal defines a change request in the protocol ecosystem.
+
+### Vote
+A vote records a choice (YES/NO/ABSTAIN) and weight for a proposal.
+
+### Signed Proposal / Signed Vote
+- MUST fail verification if any field changes
+- Tally MUST ignore invalid signatures and mismatched proposalId
