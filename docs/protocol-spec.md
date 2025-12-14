@@ -225,3 +225,47 @@ ChainLink {
   edges: Edge[],           // causal edges included in this link
   createdAt: ISODateTime
 }
+
+### 15.2 Semantics & Validation
+
+Accountability Chains define an ordered sequence of causal evidence.
+They are designed to be independently verifiable and tamper-evident.
+
+#### 15.2.1 Canonical Hashing
+- Each `ChainLink` MUST have a canonical hash computed as:
+  `linkHash = sha256(canonical(ChainLink))`
+- The canonical form MUST use deterministic key ordering (as defined by the SDK canonicalization rules).
+
+#### 15.2.2 Genesis Link
+- A chain MAY start with a genesis link.
+- A genesis link MUST omit `prevLinkHash`.
+
+#### 15.2.3 Linking Rule (Integrity)
+- If `prevLinkHash` is present, it MUST equal the `linkHash` of the immediately previous `ChainLink`.
+- If any previous link is modified, the chain MUST be considered invalid from that point onward.
+
+#### 15.2.4 Signature Rule (Accountability)
+- A `SignedChainLink` MUST be a valid signature over the `ChainLink` object.
+- Verification MUST fail if any field inside `ChainLink` changes.
+- The `alg` MUST be explicit (e.g. `ED25519`). Non-secure demo algorithms MUST NOT be used for production security.
+
+#### 15.2.5 Edge Validity Requirement
+- Each `Edge` included in a `ChainLink` MUST be valid under Accountability Graph rules:
+  - NodeRef hashes MUST match canonical hashing of referenced objects.
+- Chains MAY include edges that reference objects not embedded in the chain; verifiers MUST have access to those referenced objects to validate the edges.
+
+#### 15.2.6 Ordering Semantics (No Reordering)
+- The order of `edges` inside a `ChainLink` MUST be preserved.
+- Reordering edges changes the canonical hash and MUST invalidate the link (and therefore the chain).
+
+#### 15.2.7 Minimal Verification Algorithm (Normative)
+A verifier MUST:
+1. Verify each `SignedChainLink` signature.
+2. Recompute each `linkHash = sha256(canonical(ChainLink))`.
+3. Ensure `prevLinkHash` matches the previous `linkHash` for all non-genesis links.
+4. Validate all `Edge` objects (by validating referenced NodeRefs against their objects).
+If any step fails, the chain MUST be rejected as invalid.
+
+#### 15.2.8 Scope of Trust
+- Chain validity is cryptographic + structural.
+- Whether a verifier ACCEPTS a chain as trustworthy is a policy decision (Trust Policy layer).
