@@ -312,3 +312,47 @@ A windowed audit MUST NOT:
 
 If a required ancestor link falls outside the time window, it MUST be included
 as a dependency but MAY be marked as out-of-window context.
+
+### 15.6 — Threat Model (Accountability Graph)
+
+This section defines the threat assumptions and guarantees provided by the
+Accountability Graph and Accountability Chain mechanisms.
+
+#### 15.6.1 Threats Addressed
+
+The Accountability Graph MUST detect or prevent the following threats:
+
+- Retroactive modification of signed objects
+- Reordering or deletion of causal links
+- Forged edges referencing tampered objects
+- Replay of previously executed contracts without detection
+- Partial disclosure intended to hide causality
+
+#### 15.6.2 Threats Not Addressed
+
+The Accountability Graph does NOT protect against:
+
+- Compromise of private signing keys
+- Malicious issuers producing valid but harmful actions
+- Social engineering or policy-layer misconfiguration
+- Collusion between trusted issuers
+
+These threats MUST be handled by operational security, governance, or trust
+policy layers.
+
+#### 15.6.3 Security Guarantees
+
+Given uncompromised keys and correct verification, the system guarantees:
+
+- Tamper-evident accountability
+- Verifiable causal ordering
+- Cryptographic non-repudiation
+- Replay detection at the accountability layer
+
+#### 15.6.4 Trust Boundary
+
+The cryptographic validity of the Accountability Graph is objective and
+verifiable.
+
+Whether a valid graph is accepted as trustworthy remains a policy decision
+outside the scope of this specification.
