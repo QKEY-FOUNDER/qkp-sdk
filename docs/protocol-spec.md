@@ -290,3 +290,25 @@ Typical audit views include:
 - All executions derived from a specific ExecutionContract
 - All claims issued or revoked by a given issuer
 - All graph activity within a given time window
+
+### 15.5 — Temporal / Windowed Audits
+
+Temporal audits allow verifying Accountability Graph activity within a defined
+time window while preserving causal integrity.
+
+A temporal audit window is defined by:
+- startTime (inclusive)
+- endTime (inclusive)
+
+A windowed audit MUST:
+- Include only nodes and edges with `createdAt` within the time window
+- Include any required ancestor links necessary to validate `prevLinkHash`
+- Preserve original hashes and signatures
+
+A windowed audit MUST NOT:
+- Truncate causal history required to validate included links
+- Modify timestamps, hashes, or signatures
+- Reorder links across time boundaries
+
+If a required ancestor link falls outside the time window, it MUST be included
+as a dependency but MAY be marked as out-of-window context.
