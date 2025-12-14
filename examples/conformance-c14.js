@@ -1,6 +1,6 @@
 // Conformance C14 — Accountability Chain (linked hashes + signed links)
 
-import { graph, crypto } from "../src/index.js";
+import { graph, crypto, utils } from "../src/index.js";
 
 const run = async () => {
   console.log("C14 — Accountability Chain Integrity");
@@ -71,7 +71,7 @@ const run = async () => {
   };
 
   const tamperedL1Hash = await crypto.sha256Hex(
-    crypto.utf8ToBytes(crypto.canonicalize(tamperedL1))
+    utilis.utf8ToBytes(crypto.canonicalize(tamperedL1))
   );
 
   if (tamperedL1Hash === l1.linkHash) {
