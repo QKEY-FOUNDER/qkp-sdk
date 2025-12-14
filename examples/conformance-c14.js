@@ -71,7 +71,7 @@ const run = async () => {
   };
 
   const tamperedL1Hash = await crypto.sha256Hex(
-    utilis.utf8ToBytes(crypto.canonicalize(tamperedL1))
+    utils.utf8ToBytes(crypto.canonicalize(tamperedL1))
   );
 
   if (tamperedL1Hash === l1.linkHash) {
