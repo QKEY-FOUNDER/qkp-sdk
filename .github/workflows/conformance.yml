@@ -29,3 +29,4 @@ jobs:
           node examples/conformance-c10.js
           node examples/conformance-c11.js
           node examples/conformance-c12.js
+          node examples/conformance-c13.js
