@@ -176,3 +176,13 @@ Two intents with the same semantic content but different key order.
 3. Create edges: SignedIntent AUTHORIZES ExecutionContract; ExecutionContract PRODUCES ExecutionReceipt
 4. Validate edges by recomputing hashes from the referenced objects => MUST be true
 5. Tamper a referenced object => validation MUST be false
+
+---
+
+## Case C14 — Accountability Chain (linked hashes + signed links)
+
+### Steps
+1. Build two chain links: L1 (genesis) and L2 (references L1 hash)
+2. Sign both links
+3. Verify signatures => MUST be true
+4. Tamper L1 edges => L2 prevLinkHash no longer matches => MUST be detected
