@@ -186,6 +186,7 @@ Two intents with the same semantic content but different key order.
 2. Sign both links
 3. Verify signatures => MUST be true
 4. Tamper L1 edges => L2 prevLinkHash no longer matches => MUST be detected
+5. ### Expected Properties
 - Verifies chained causal links via `prevLinkHash`
 - Any retroactive modification MUST invalidate the chain
 - Demonstrates tamper-evident accountability
