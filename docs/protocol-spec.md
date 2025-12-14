@@ -269,3 +269,24 @@ If any step fails, the chain MUST be rejected as invalid.
 #### 15.2.8 Scope of Trust
 - Chain validity is cryptographic + structural.
 - Whether a verifier ACCEPTS a chain as trustworthy is a policy decision (Trust Policy layer).
+
+### 15.4 — Subgraph Extraction (Audit Views)
+
+Subgraph extraction allows deriving verifiable audit views from an Accountability Graph
+by selecting a subset of nodes and edges while preserving causal integrity.
+
+A subgraph MUST:
+- Include all referenced nodes for any included edge
+- Preserve original hashes (`hash`, `prevLinkHash`)
+- Remain independently verifiable against the full graph
+
+Subgraph extraction MUST NOT:
+- Reorder causal links
+- Omit dependencies required to validate an edge
+- Modify node or edge payloads
+
+Typical audit views include:
+- All actions authorized by a given SignedIntent
+- All executions derived from a specific ExecutionContract
+- All claims issued or revoked by a given issuer
+- All graph activity within a given time window
