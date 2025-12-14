@@ -209,3 +209,19 @@ Edge {
   to: NodeRef,
   createdAt: ISODateTime
 }
+
+## Accountability Chains (v0.1.x)
+
+Accountability chains provide ordered, tamper-evident sequences of causal edges.
+Each link references the previous link hash (optional for genesis).
+
+### ChainLink (Canonical Form)
+
+```ts```
+ChainLink {
+  version: "0.1",
+  linkId: string,
+  prevLinkHash?: string,   // optional for genesis
+  edges: Edge[],           // causal edges included in this link
+  createdAt: ISODateTime
+}
