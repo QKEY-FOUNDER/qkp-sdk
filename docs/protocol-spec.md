@@ -356,3 +356,40 @@ verifiable.
 
 Whether a valid graph is accepted as trustworthy remains a policy decision
 outside the scope of this specification.
+
+### C15 — Chain-of-Chains / Aggregation (v0.1.x)
+
+Aggregation provides a tamper-evident way to reference multiple accountability chains
+using their head hashes, optionally forming higher-level aggregation chains.
+
+#### ChainAggregate (Canonical Form)
+
+```ts```
+ChainAggregate {
+  version: "0.1",
+  aggregateId: string,
+  prevAggHash?: string,       // optional (genesis aggregate)
+  headHashes: string[],       // ordered list of chain head hashes
+  createdAt: ISODateTime
+}
+
+SignedChainAggregate {
+  version: "0.1",
+  aggregate: ChainAggregate,
+  signature: string,
+  publicKey: string,
+  alg: string,
+  createdAt: ISODateTime
+}
+Rules
+
+headHashes order MUST be preserved (reordering MUST change the aggregate hash).
+
+If prevAggHash is present, it MUST match the canonical hash of the previous aggregate.
+
+Signatures MUST fail if any field changes.
+
+Aggregation is structural; acceptance/trust remains a policy decision.
+
+
+---
