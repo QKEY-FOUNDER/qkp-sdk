@@ -1,38 +1,54 @@
-import { crypto, graph, utils } from "../src/index.js";
+import { crypto, graph } from "../src/index.js";
 
 const run = async () => {
   console.log("C15 — Chain-of-Chains / Aggregation");
 
   // keys
   const keys = await crypto.generateEd25519KeyPair();
-  const keypair = { alg: "ED25519", privateKey: keys.privateKey, publicKey: keys.publicKey };
+  const keypair = {
+    alg: "ED25519",
+    privateKey: keys.privateKey,
+    publicKey: keys.publicKey,
+  };
 
-  // Build two minimal chains (just create two links each)
-  const dummyNode = await graph.makeNodeRef({
+  // Build deterministic NodeRefs
+  const contractRef = await graph.makeNodeRef({
     kind: "ExecutionContract",
     id: "contract-x",
     objectToHash: { version: "0.1", contractId: "contract-x" },
   });
 
-  const dummyNode2 = await graph.makeNodeRef({
+  const receiptRef = await graph.makeNodeRef({
     kind: "ExecutionReceipt",
     id: "receipt-x",
     objectToHash: { version: "0.1", receiptId: "receipt-x", status: "EXECUTED" },
   });
 
-  const e = graph.createEdge({ type: "PRODUCES", from: dummyNode, to: dummyNode2 });
+  const edge = graph.createEdge({
+    type: "PRODUCES",
+    from: contractRef,
+    to: receiptRef,
+  });
 
   // Chain A (L1 -> L2)
-  const a1 = await graph.createChainLink({ linkId: "A-1", edges: [e] });
-  const a2 = await graph.createChainLink({ linkId: "A-2", prevLinkHash: a1.linkHash, edges: [e] });
+  const a1 = await graph.createChainLink({ linkId: "A-1", edges: [edge] });
+  const a2 = await graph.createChainLink({
+    linkId: "A-2",
+    prevLinkHash: a1.linkHash,
+    edges: [edge],
+  });
   const headA = a2.linkHash;
 
   // Chain B (L1 -> L2)
-  const b1 = await graph.createChainLink({ linkId: "B-1", edges: [e] });
-  const b2 = await graph.createChainLink({ linkId: "B-2", prevLinkHash: b1.linkHash, edges: [e] });
+  const b1 = await graph.createChainLink({ linkId: "B-1", edges: [edge] });
+  const b2 = await graph.createChainLink({
+    linkId: "B-2",
+    prevLinkHash: b1.linkHash,
+    edges: [edge],
+  });
   const headB = b2.linkHash;
 
-  // Aggregate (order matters)
+  // Aggregate (ORDER MATTERS)
   const agg = await graph.createChainAggregate({
     aggregateId: "agg-001",
     headHashes: [headA, headB],
@@ -44,7 +60,7 @@ const run = async () => {
   console.log("C15 verify signed aggregate (should be true):", ok);
   if (!ok) throw new Error("C15 failed: signed aggregate did not verify");
 
-  // Tamper by reordering head hashes
+  // Tamper by reordering head hashes (must invalidate signature)
   const tampered = {
     ...signedAgg,
     aggregate: { ...signedAgg.aggregate, headHashes: [headB, headA] },
