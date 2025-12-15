@@ -217,7 +217,7 @@ Each link references the previous link hash (optional for genesis).
 
 ### ChainLink (Canonical Form)
 
-```ts```
+```ts
 ChainLink {
   version: "0.1",
   linkId: string,
@@ -225,7 +225,7 @@ ChainLink {
   edges: Edge[],           // causal edges included in this link
   createdAt: ISODateTime
 }
-
+```
 ### 15.2 Semantics & Validation
 
 Accountability Chains define an ordered sequence of causal evidence.
@@ -364,7 +364,7 @@ using their head hashes, optionally forming higher-level aggregation chains.
 
 #### ChainAggregate (Canonical Form)
 
-```ts```
+```ts
 ChainAggregate {
   version: "0.1",
   aggregateId: string,
@@ -381,7 +381,7 @@ SignedChainAggregate {
   alg: string,
   createdAt: ISODateTime
 }
-
+```
 #### Rules
 
 headHashes order MUST be preserved (reordering MUST change the aggregate hash).
