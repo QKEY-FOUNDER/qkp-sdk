@@ -381,7 +381,8 @@ SignedChainAggregate {
   alg: string,
   createdAt: ISODateTime
 }
-Rules
+
+#### Rules
 
 headHashes order MUST be preserved (reordering MUST change the aggregate hash).
 
@@ -391,5 +392,5 @@ Signatures MUST fail if any field changes.
 
 Aggregation is structural; acceptance/trust remains a policy decision.
 
-
+Note: Aggregates MAY reference heterogeneous chains, provided all head hashes are valid and verifiable.
 ---
