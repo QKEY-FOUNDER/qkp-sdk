@@ -190,3 +190,13 @@ Two intents with the same semantic content but different key order.
 - Verifies chained causal links via `prevLinkHash`
 - Any retroactive modification MUST invalidate the chain
 - Demonstrates tamper-evident accountability
+
+---
+
+## Case C15 — Chain-of-Chains / Aggregation
+
+### Steps
+1. Build two independent chains and obtain their head hashes
+2. Create a ChainAggregate referencing both head hashes (ordered list)
+3. Sign the aggregate and verify signature => MUST be true
+4. Reorder headHashes => signature MUST fail or hash MUST change (tamper detected)
