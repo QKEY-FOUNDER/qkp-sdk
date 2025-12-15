@@ -182,3 +182,5 @@ A living architecture for aligned intelligence
 - `conformance-c13.js` — Accountability graphs (NodeRef + Edge + validation)
 
 - `conformance-c14.js` — Accountability Chain tamper detection
+
+- `conformance-c15.js` — Chain-of-Chains aggregation (signed head hash list)
