@@ -53,4 +53,3 @@ export async function verifySignedChainAggregate(signedAgg) {
     alg: signedAgg.alg,
   });
 }
-```
