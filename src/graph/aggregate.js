@@ -1,4 +1,3 @@
-```js
 import { canonicalize } from "../crypto/canonical.js";
 import { sha256Hex } from "../crypto/sha256.js";
 import { utf8ToBytes } from "../utils/index.js";
@@ -28,7 +27,6 @@ export async function createChainAggregate({
 }
 
 export async function signChainAggregate(aggregate, keypair) {
-  // expects keypair = { alg, privateKey, publicKey }
   const signed = await sign(aggregate, keypair);
   return {
     version: "0.1",
