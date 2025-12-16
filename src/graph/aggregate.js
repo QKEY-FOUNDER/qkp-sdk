@@ -1,3 +1,8 @@
+---
+
+## 2) SDK — `src/graph/aggregate.js` (SUBSTITUIR pelo código abaixo)
+**Este ficheiro é o coração do bug que viste.** Substitui o conteúdo todo por isto:
+
 ```js
 import { canonicalize } from "../crypto/canonical.js";
 import { sha256Hex } from "../crypto/sha256.js";
@@ -28,6 +33,7 @@ export async function createChainAggregate({
 }
 
 export async function signChainAggregate(aggregate, keypair) {
+  // expects keypair = { alg, privateKey, publicKey }
   const signed = await sign(aggregate, keypair);
   return {
     version: "0.1",
