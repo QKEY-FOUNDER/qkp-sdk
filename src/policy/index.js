@@ -1,5 +1,6 @@
 export {
   evaluateFederatedAggregatePolicy,
   evaluateWindowedAggregatePolicy,
-  evaluateHierarchicalAggregatePolicy
+  evaluateHierarchicalAggregatePolicy,
+  evaluateTrustPolicy
 } from "./evaluate.js";
