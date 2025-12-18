@@ -200,3 +200,14 @@ Two intents with the same semantic content but different key order.
 2. Create a ChainAggregate referencing both head hashes (ordered list)
 3. Sign the aggregate and verify signature => MUST be true
 4. Reorder headHashes => signature MUST fail or hash MUST change (tamper detected)
+
+---
+
+## Case C16 — Temporal / Windowed Aggregation
+
+### Steps
+1. Create two chain heads (head hashes)
+2. Create a WindowedChainAggregate with windowStart <= windowEnd
+3. Sign and verify => MUST be true
+4. Tamper by swapping windowStart/windowEnd (start > end) => MUST be rejected
+5. Tamper by reordering headHashes => verification MUST fail
