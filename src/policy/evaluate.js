@@ -8,40 +8,61 @@ function parseISO(iso) {
   return t;
 }
 
-function inAllowList(value, allowList) {
-  if (!allowList || allowList.length === 0) return true;
-  return allowList.includes(value);
-}
-
 function allInAllowList(values, allowList) {
   if (!allowList || allowList.length === 0) return true;
   return values.every((v) => allowList.includes(v));
 }
 
 // ---------- C16 — Windowed Aggregation Policy ----------
+// Works with the protocol shape: windowStart / windowEnd (ISODateTime)
 
-export function evaluateWindowedAggregatePolicy(windowed, policy = {}) {
+export function evaluateWindowedAggregatePolicy(windowedAggregate, policy = {}) {
   const reasons = [];
 
-  if (!windowed || !windowed.window) {
+  if (!windowedAggregate) {
     return { accepted: false, reasons: ["missing windowed aggregate"] };
   }
 
-  const { window } = windowed;
-  const from = parseISO(window.from);
-  const to = parseISO(window.to);
+  const from = parseISO(windowedAggregate.windowStart);
+  const to = parseISO(windowedAggregate.windowEnd);
 
   if (from === null || to === null) {
     reasons.push("invalid window timestamps");
+  } else if (from > to) {
+    reasons.push("windowStart MUST be <= windowEnd");
   }
 
-  if (from !== null && to !== null && from > to) {
-    reasons.push("window.from must be <= window.to");
+  if (policy.requireWindowStartAfter) {
+    const min = parseISO(policy.requireWindowStartAfter);
+    if (min === null || from === null || from < min) {
+      reasons.push("windowStart is before policy minimum");
+    }
   }
 
-  if (policy.maxWindowMs != null && from !== null && to !== null) {
-    if (to - from > policy.maxWindowMs) {
-      reasons.push("window exceeds maximum duration");
+  if (policy.requireWindowEndBefore) {
+    const max = parseISO(policy.requireWindowEndBefore);
+    if (max === null || to === null || to > max) {
+      reasons.push("windowEnd is after policy maximum");
+    }
+  }
+
+  return { accepted: reasons.length === 0, reasons };
+}
+
+// ---------- C17 — Hierarchical Aggregation Policy ----------
+
+export function evaluateHierarchicalAggregatePolicy(hierAggregate, policy = {}) {
+  const reasons = [];
+
+  if (!hierAggregate) {
+    return { accepted: false, reasons: ["missing hierarchical aggregate"] };
+  }
+
+  if (typeof policy.requireLevel === "number") {
+    if (hierAggregate.level !== policy.requireLevel) {
+      reasons.push(
+        `level mismatch: expected ${policy.requireLevel}, got ${hierAggregate.level}`
+      );
     }
   }
 
@@ -49,6 +70,9 @@ export function evaluateWindowedAggregatePolicy(windowed, policy = {}) {
 }
 
 // ---------- C18 — Federated Aggregation Policy ----------
+// Supports BOTH shapes:
+// - legacy: federated.signatures[]
+// - current: federated.aggregates[] (each signed)
 
 export function evaluateFederatedAggregatePolicy(federated, policy = {}) {
   const reasons = [];
@@ -57,9 +81,6 @@ export function evaluateFederatedAggregatePolicy(federated, policy = {}) {
     return { accepted: false, reasons: ["missing federated payload"] };
   }
 
-  // Accept BOTH shapes:
-  // - legacy: federated.signatures[]
-  // - current: federated.aggregates[] (each signed)
   let entries = [];
 
   if (Array.isArray(federated.signatures)) {
@@ -98,10 +119,7 @@ export function evaluateTrustPolicy({ cryptoValid, policyResult }) {
   }
 
   if (!policyResult || !policyResult.accepted) {
-    return {
-      accepted: false,
-      reasons: policyResult?.reasons || ["policy rejected"],
-    };
+    return { accepted: false, reasons: policyResult?.reasons || ["policy rejected"] };
   }
 
   return { accepted: true, reasons: [] };
