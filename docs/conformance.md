@@ -211,3 +211,14 @@ Two intents with the same semantic content but different key order.
 3. Sign and verify => MUST be true
 4. Tamper by swapping windowStart/windowEnd (start > end) => MUST be rejected
 5. Tamper by reordering headHashes => verification MUST fail
+
+---
+
+## Case C17 — Hierarchical / Recursive Aggregation
+
+### Steps
+1. Create two base aggregates (C15-style) and obtain their aggregate hashes
+2. Create a hierarchical aggregate referencing the two child aggregate hashes
+3. Sign and verify => MUST be true
+4. Tamper by reordering childAggHashes => verification MUST fail
+5. Tamper by setting level < 0 => MUST be rejected
