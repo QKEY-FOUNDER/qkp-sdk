@@ -396,4 +396,43 @@ Aggregation is structural; acceptance/trust remains a policy decision.
 
 ---
 
+### C16 — Temporal / Windowed Aggregation (v0.1.x)
 
+Temporal aggregation defines a ChainAggregate where `headHashes` are grouped
+according to a verifier-defined time window.
+
+#### WindowedChainAggregate (Canonical Form)
+
+```ts
+WindowedChainAggregate {
+  version: "0.1",
+  aggregateId: string,
+  windowStart: ISODateTime,   // inclusive
+  windowEnd: ISODateTime,     // inclusive
+  prevAggHash?: string,
+  headHashes: string[],       // ordered list of chain head hashes in the window
+  createdAt: ISODateTime
+}
+```
+### SignedWindowedChainAggregate (Canonical Form)
+
+SignedWindowedChainAggregate {
+  version: "0.1",
+  aggregate: WindowedChainAggregate,
+  signature: string,
+  publicKey: string,
+  alg: string,
+  createdAt: ISODateTime
+}
+
+### Rules
+
+windowStart MUST be <= windowEnd.
+
+headHashes order MUST be preserved (reordering MUST change the aggregate hash).
+
+If prevAggHash is present, it MUST match the canonical hash of the previous aggregate.
+
+Temporal membership ("which headHashes belong in the window") is derived from evidence outside this structure and is a verifier/policy decision.
+
+Signatures MUST fail if any field changes.
