@@ -543,3 +543,43 @@ Reordering signatures MUST NOT change verification outcome (signatures are a set
 Acceptance policy (how many signatures, which issuers) is a Trust Policy decision.
 
 ---
+
+### C19 — Trust Policy Evaluation (Acceptance Layer) (v0.1.x)
+
+Cryptographic validity proves integrity. Trust policy determines acceptance.
+
+This layer defines local acceptance rules applied AFTER cryptographic verification,
+such as issuer allowlists, signature thresholds, and optional constraints by level
+or time windows. Policy evaluation does not change hashes or signatures.
+
+#### TrustPolicy (Canonical Form)
+
+```ts
+TrustPolicy {
+  version: "0.1",
+  name: string,
+
+  // Generic
+  allowAlgorithms?: string[],           // e.g. ["ED25519"]
+  allowPublicKeys?: string[],           // allowlist of issuer keys
+
+  // Federated acceptance
+  minSignatures?: number,               // minimum required signatures
+
+  // Optional constraints (hierarchical/windowed)
+  requireLevel?: number,                // required level for hierarchical aggregates
+  requireWindowStartAfter?: ISODateTime, // for windowed aggregates
+  requireWindowEndBefore?: ISODateTime   // for windowed aggregates
+}
+```
+
+### Rules
+
+Policy evaluation MUST NOT modify protocol objects.
+
+Policy evaluation MUST reject objects that fail cryptographic verification.
+
+Acceptance is local and subjective; different verifiers MAY accept/reject the same valid object.
+
+
+---
