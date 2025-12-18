@@ -222,3 +222,14 @@ Two intents with the same semantic content but different key order.
 3. Sign and verify => MUST be true
 4. Tamper by reordering childAggHashes => verification MUST fail
 5. Tamper by setting level < 0 => MUST be rejected
+
+---
+
+## Case C18 — Federated / Cross-domain Aggregation
+
+### Steps
+1. Create a FederatedAggregate (with headHashes or childAggHashes)
+2. Add two signatures from two different keypairs
+3. Verify => MUST be true
+4. Tamper aggregate content => verification MUST fail
+5. Remove all signatures => verification MUST fail
