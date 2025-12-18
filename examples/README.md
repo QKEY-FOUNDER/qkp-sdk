@@ -184,3 +184,5 @@ A living architecture for aligned intelligence
 - `conformance-c14.js` — Accountability Chain tamper detection
 
 - `conformance-c15.js` — Chain-of-Chains aggregation (signed head hash list)
+
+- `conformance-c16.js` — Windowed aggregation (windowStart/windowEnd + signed head hash list)
