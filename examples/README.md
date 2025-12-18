@@ -190,3 +190,5 @@ A living architecture for aligned intelligence
 - `conformance-c17.js` — Hierarchical aggregation (aggregate-of-aggregates)
 
 - `conformance-c18.js` — Federated aggregation (multi-signature over same aggregate)
+
+- `conformance-c19.js` — Trust Policy Evaluation (accept/reject valid federated aggregate)
