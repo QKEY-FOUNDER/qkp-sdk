@@ -16,6 +16,6 @@ export {
 } from "./hier-aggregate.js";
 export {
   createFederatedAggregate,
-  addFederatedSignature,
-  verifySignedFederatedAggregate
+  signFederatedAggregate,
+  verifySignedFederatedAggregate,
 } from "./federated-aggregate.js";
