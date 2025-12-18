@@ -33,3 +33,4 @@ jobs:
           node examples/conformance-c14.js
           node examples/conformance-c15.js
           node examples/conformance-c16.js
+          node examples/conformance-c17.js
