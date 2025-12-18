@@ -9,3 +9,8 @@ export {
   signWindowedChainAggregate,
   verifySignedWindowedChainAggregate,
 } from "./windowed-aggregate.js";
+export {
+  createHierarchicalAggregate,
+  signHierarchicalAggregate,
+  verifySignedHierarchicalAggregate
+} from "./hier-aggregate.js";
