@@ -436,3 +436,50 @@ If prevAggHash is present, it MUST match the canonical hash of the previous aggr
 Temporal membership ("which headHashes belong in the window") is derived from evidence outside this structure and is a verifier/policy decision.
 
 Signatures MUST fail if any field changes.
+
+### C17 — Hierarchical / Recursive Aggregation (v0.1.x)
+
+Hierarchical aggregation allows aggregates to reference other aggregates,
+forming recursive “aggregate-of-aggregates” structures. This enables
+multi-level accountability summaries (e.g., per-agent → per-day → per-project).
+
+#### HierarchicalAggregate (Canonical Form)
+
+```ts
+HierarchicalAggregate {
+  version: "0.1",
+  aggregateId: string,
+  prevAggHash?: string,          // optional (genesis aggregate)
+  level: number,                // 0 = base, 1 = aggregate-of-aggregates, ...
+  headHashes?: string[],         // optional (chain heads)
+  childAggHashes?: string[],     // optional (hashes of child aggregates)
+  createdAt: ISODateTime
+}
+```
+
+### SignedHierarchicalAggregate (Canonical Form)
+
+SignedHierarchicalAggregate {
+  version: "0.1",
+  aggregate: HierarchicalAggregate,
+  signature: string,
+  publicKey: string,
+  alg: string,
+  createdAt: ISODateTime
+}
+
+### Rules
+
+An aggregate MUST include at least one of: headHashes or childAggHashes.
+
+headHashes order MUST be preserved.
+
+childAggHashes order MUST be preserved.
+
+If prevAggHash is present, it MUST match the canonical hash of the previous aggregate.
+
+level MUST be >= 0.
+
+Signatures MUST fail if any field changes.
+
+Whether referenced hashes correspond to valid chains/aggregates is a verifier/policy decision unless the verifier has access to those objects.
