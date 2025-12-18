@@ -233,3 +233,14 @@ Two intents with the same semantic content but different key order.
 3. Verify => MUST be true
 4. Tamper aggregate content => verification MUST fail
 5. Remove all signatures => verification MUST fail
+
+---
+
+## Case C19 — Trust Policy Evaluation (Acceptance Layer)
+
+### Steps
+1. Create a valid SignedFederatedAggregate with two signatures
+2. Verify cryptographic validity => MUST be true
+3. Apply policy requiring 2 signatures + allowlist keys => MUST be accepted
+4. Apply stricter policy (minSignatures=3) => MUST be rejected
+5. Apply allowlist missing one key => MUST be rejected
