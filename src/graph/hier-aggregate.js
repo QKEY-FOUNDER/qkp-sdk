@@ -1,5 +1,3 @@
-Js
-
 import { canonicalize } from "../crypto/canonical.js";
 import { sha256Hex } from "../crypto/sha256.js";
 import { utf8ToBytes } from "../utils/index.js";
@@ -14,7 +12,9 @@ export async function createHierarchicalAggregate({
   createdAt = new Date().toISOString(),
 }) {
   if (!aggregateId) throw new Error("aggregateId is required");
-  if (typeof level !== "number" || level < 0) throw new Error("level MUST be >= 0");
+  if (typeof level !== "number" || level < 0) {
+    throw new Error("level MUST be >= 0");
+  }
 
   const hasHeads = Array.isArray(headHashes) && headHashes.length > 0;
   const hasChildren = Array.isArray(childAggHashes) && childAggHashes.length > 0;
@@ -33,7 +33,10 @@ export async function createHierarchicalAggregate({
     createdAt,
   };
 
-  const aggHash = await sha256Hex(utf8ToBytes(canonicalize(aggregate)));
+  const aggHash = await sha256Hex(
+    utf8ToBytes(canonicalize(aggregate))
+  );
+
   return { aggregate, aggHash };
 }
 
