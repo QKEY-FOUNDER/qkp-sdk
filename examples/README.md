@@ -186,3 +186,5 @@ A living architecture for aligned intelligence
 - `conformance-c15.js` — Chain-of-Chains aggregation (signed head hash list)
 
 - `conformance-c16.js` — Windowed aggregation (windowStart/windowEnd + signed head hash list)
+
+- `conformance-c17.js` — Hierarchical aggregation (aggregate-of-aggregates)
