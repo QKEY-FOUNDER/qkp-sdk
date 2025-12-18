@@ -489,3 +489,57 @@ Signatures MUST fail if any field changes.
 Whether referenced hashes correspond to valid chains/aggregates is a verifier/policy decision unless the verifier has access to those objects.
 
 ---
+
+### C18 — Federated / Cross-domain Aggregation (v0.1.x)
+
+Federated aggregation allows multiple independent issuers to co-sign a shared
+aggregate. This enables cross-domain accountability where several entities
+attest to the same aggregate content.
+
+#### FederatedAggregate (Canonical Form)
+
+```ts
+FederatedAggregate {
+  version: "0.1",
+  aggregateId: string,
+  level: number,                 // hierarchical level (>= 0)
+  prevAggHash?: string,
+  headHashes?: string[],          // optional chain heads
+  childAggHashes?: string[],      // optional child aggregates
+  createdAt: ISODateTime
+}
+```
+
+### MultiSignature (Canonical Form)
+
+MultiSignature {
+  signature: string,
+  publicKey: string,
+  alg: string,
+  signedAt: ISODateTime
+}
+
+### SignedFederatedAggregate (Canonical Form)
+
+SignedFederatedAggregate {
+  version: "0.1",
+  aggregate: FederatedAggregate,
+  signatures: MultiSignature[],   // one or more signatures
+  createdAt: ISODateTime
+}
+
+### Rules
+
+A federated aggregate MUST include at least one of: headHashes or childAggHashes.
+
+level MUST be >= 0.
+
+signatures MUST contain at least 1 signature.
+
+Each signature MUST verify against the same canonical FederatedAggregate.
+
+Reordering signatures MUST NOT change verification outcome (signatures are a set).
+
+Acceptance policy (how many signatures, which issuers) is a Trust Policy decision.
+
+---
