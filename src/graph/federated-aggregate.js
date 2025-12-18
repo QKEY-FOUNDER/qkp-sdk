@@ -1,41 +1,90 @@
----
-
-import { canonicalize } from "../crypto/canonical.js"; import { sha256Hex } from "../crypto/sha256.js"; import { utf8ToBytes } from "../utils/index.js"; import { sign, verify } from "../crypto/index.js";
-
-/**
-
-Create a Federated / Cross-domain Aggregate */ export async function createFederatedAggregate({ aggregateId, level, headHashes, childAggHashes, prevAggHash, createdAt = new Date().toISOString(), }) { if (!aggregateId) throw new Error("aggregateId is required"); if (typeof level !== "number" || level < 0) { throw new Error("level MUST be a number >= 0"); }
-
-
-const hasHeads = Array.isArray(headHashes) && headHashes.length > 0; const hasChildren = Array.isArray(childAggHashes) && childAggHashes.length > 0;
-
-if (!hasHeads && !hasChildren) { throw new Error("FederatedAggregate MUST include headHashes or childAggHashes"); }
-
-const aggregate = { version: "0.1", aggregateId, level, ...(prevAggHash ? { prevAggHash } : {}), ...(hasHeads ? { headHashes } : {}), ...(hasChildren ? { childAggHashes } : {}), createdAt, };
-
-const aggregateHash = await sha256Hex( utf8ToBytes(canonicalize(aggregate)) );
-
-return { aggregate, aggregateHash }; }
+import { canonicalize } from "../crypto/canonical.js";
+import { sha256Hex } from "../crypto/sha256.js";
+import { utf8ToBytes } from "../utils/index.js";
+import { sign, verify } from "../crypto/index.js";
 
 /**
+ * C18 — Federated / Multi-Issuer Aggregate
+ *
+ * Canonical aggregate of multiple signed aggregates
+ */
 
-Add a signature from one issuer to a federated aggregate */ export async function addFederatedSignature(signedFederated, keypair) { if (!signedFederated?.aggregate) { throw new Error("signedFederated.aggregate is required"); }
+export async function createFederatedAggregate({
+  federatedId,
+  aggregates,
+  createdAt = new Date().toISOString(),
+}) {
+  if (!federatedId) {
+    throw new Error("federatedId is required");
+  }
 
+  if (!Array.isArray(aggregates) || aggregates.length === 0) {
+    throw new Error("aggregates must be a non-empty array");
+  }
 
-const signed = await sign(signedFederated.aggregate, keypair);
+  // Each aggregate MUST already be signed
+  for (const agg of aggregates) {
+    if (!agg.aggregate || !agg.signature || !agg.publicKey) {
+      throw new Error("each entry must be a SignedAggregate");
+    }
+  }
 
-const multiSig = { signature: signed.signature, publicKey: signed.publicKey, alg: signed.alg, signedAt: signed.createdAt, };
+  const canonicalAggregates = aggregates.map((a) => ({
+    aggregate: a.aggregate,
+    signature: a.signature,
+    publicKey: a.publicKey,
+    alg: a.alg,
+  }));
 
-return { version: "0.1", aggregate: signedFederated.aggregate, signatures: [...(signedFederated.signatures || []), multiSig], createdAt: signedFederated.createdAt || new Date().toISOString(), }; }
+  const federated = {
+    version: "0.1",
+    federatedId,
+    aggregates: canonicalAggregates,
+    createdAt,
+  };
 
-/**
+  const federatedHash = await sha256Hex(
+    utf8ToBytes(canonicalize(federated))
+  );
 
-Verify a federated aggregate with multiple signatures */ export async function verifySignedFederatedAggregate(signedFederated) { if (!signedFederated?.aggregate) return false; if (!Array.isArray(signedFederated.signatures)) return false; if (signedFederated.signatures.length === 0) return false;
+  return { federated, federatedHash };
+}
 
+export async function signFederatedAggregate(federated, keypair) {
+  const signed = await sign(federated, keypair);
 
-for (const s of signedFederated.signatures) { const ok = await verify({ payload: signedFederated.aggregate, signature: s.signature, publicKey: s.publicKey, alg: s.alg, }); if (!ok) return false; }
+  return {
+    version: "0.1",
+    federated,
+    signature: signed.signature,
+    publicKey: signed.publicKey,
+    alg: signed.alg,
+    createdAt: signed.createdAt,
+  };
+}
 
-return true; }
+export async function verifySignedFederatedAggregate(signedFederated) {
+  // 1. Verify outer signature
+  const outerValid = await verify({
+    payload: signedFederated.federated,
+    signature: signedFederated.signature,
+    publicKey: signedFederated.publicKey,
+    alg: signedFederated.alg,
+  });
 
+  if (!outerValid) return false;
 
----
+  // 2. Verify every inner aggregate signature
+  for (const entry of signedFederated.federated.aggregates) {
+    const ok = await verify({
+      payload: entry.aggregate,
+      signature: entry.signature,
+      publicKey: entry.publicKey,
+      alg: entry.alg,
+    });
+
+    if (!ok) return false;
+  }
+
+  return true;
+}
