@@ -14,3 +14,8 @@ export {
   signHierarchicalAggregate,
   verifySignedHierarchicalAggregate
 } from "./hier-aggregate.js";
+export {
+  createFederatedAggregate,
+  addFederatedSignature,
+  verifySignedFederatedAggregate
+} from "./federated-aggregate.js";
