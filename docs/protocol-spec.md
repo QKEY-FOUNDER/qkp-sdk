@@ -357,6 +357,8 @@ verifiable.
 Whether a valid graph is accepted as trustworthy remains a policy decision
 outside the scope of this specification.
 
+---
+
 ### C15 — Chain-of-Chains / Aggregation (v0.1.x)
 
 Aggregation provides a tamper-evident way to reference multiple accountability chains using their head hashes, optionally forming higher-level aggregation chains.
@@ -437,6 +439,8 @@ Temporal membership ("which headHashes belong in the window") is derived from ev
 
 Signatures MUST fail if any field changes.
 
+---
+
 ### C17 — Hierarchical / Recursive Aggregation (v0.1.x)
 
 Hierarchical aggregation allows aggregates to reference other aggregates,
@@ -483,3 +487,5 @@ level MUST be >= 0.
 Signatures MUST fail if any field changes.
 
 Whether referenced hashes correspond to valid chains/aggregates is a verifier/policy decision unless the verifier has access to those objects.
+
+---
