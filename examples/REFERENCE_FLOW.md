@@ -1,39 +1,38 @@
-# QKP Reference Flow — End-to-End Demonstration
+# QKP Reference Flow
 
-This document explains how to run and understand the **QuantumKey Protocol (QKP) Reference Flow**.
+This document describes the canonical, executable reference flow of the
+QuantumKey Protocol.
 
-The reference flow demonstrates, in a single execution, how QKP handles:
-- Explicit intent
-- Cryptographic execution
-- Accountability chains
-- Aggregation
-- Trust policy evaluation
-- Third-party attestation
-
-No prior knowledge of the protocol is required.
+The Reference Flow is a **living specification**:
+- It demonstrates the intended behavior of the protocol
+- It is executable
+- It is used for onboarding, audits, and regression testing
 
 ---
 
-## 1. What This Demonstrates
+## 1. Purpose
 
-The reference flow executes the following lifecycle:
-Intent → Execution Contract → Execution Receipt → Accountability Graph → Accountability Chain → Aggregation → Trust Policy Evaluation → Acceptance Receipt
-Each step produces **verifiable artifacts** that are:
-- Canonically serialized
-- Cryptographically signed
-- Tamper-evident
-- Independently verifiable
+The Reference Flow shows how:
+
+- Intent is declared and signed
+- Claims are issued
+- Execution is authorized and recorded
+- Accountability is chained
+- Aggregation is performed
+- Trust is evaluated
+- Acceptance is attested
 
 ---
 
 ## 2. How to Run
 
-From the root of the repository, run:
+From the root of the repository:
 
 ```bash
 node examples/reference-flow.js
 ```
-This requires:
+
+Requirements:
 
 Node.js 18+ (Node 20 recommended)
 
@@ -55,114 +54,45 @@ SignedIntent creation and verification
 
 SignedClaim creation and verification
 
-ExecutionContract authorization
+ExecutionChainLink creation
 
-ExecutionReceipt creation
+Aggregation and signing
 
-Accountability Graph edges
+Trust policy evaluation
 
-ChainLink hashing and signature
-
-Chain aggregation and verification
-
-Trust policy evaluation (accept / reject)
-
-AcceptanceReceipt creation and verification
-
-
-Each step explicitly reports whether cryptographic verification succeeded.
-
-
----
-
-4. How to Read the Output
-
-Key indicators to observe:
-
-signature verifies: true
-→ The object is cryptographically valid.
-
-allowed: true
-→ Execution passed authorization and policy checks.
-
-accepted: true
-→ A trust policy explicitly accepted the result.
-
-AcceptanceReceipt verified: true
-→ A third party attested the decision.
-
-
-If any step fails, the script terminates with a clear error.
-
-
----
-
-5. Why This Matters
-
-Most systems rely on implicit trust:
-
-Trusted logs
-
-Trusted operators
-
-Trusted auditors
-
-
-QKP replaces this with explicit, verifiable accountability.
-
-This reference flow shows that:
-
-Trust is not assumed
-
-Decisions are not hidden
-
-Acceptance is recorded and attestable
-
-History cannot be silently rewritten
+AcceptanceReceipt issuance
 
 
 
 ---
 
-6. Relationship to the Whitepaper
+4. Normative Status
 
-This reference flow corresponds directly to:
+This flow is normative.
 
-Whitepaper Section 4–9 (Core Architecture)
+If behavior here changes, at least one of the following MUST be updated:
 
-Appendix B — Technical Foundations
+protocol-spec.md
 
-Conformance Cases C1–C20
+conformance tests
 
-
-The flow is intentionally minimal, but complete.
-
-
----
-
-7. Next Steps
-
-After running the reference flow, you may explore:
-
-examples/conformance-* for automated verification
-
-docs/WHITEPAPER.md for architectural rationale
-
-docs/protocol-spec.md for normative definitions
+Whitepaper Appendix B
 
 
 
 ---
 
-Summary
+5. Relation to Conformance
 
-The QKP Reference Flow demonstrates that:
+This flow exercises concepts validated by:
 
-> Trust is not a belief.
-It is a verifiable process.
+C1–C7 (Intent, Claim, Execution)
 
+C13–C14 (Graphs and Chains)
 
+C15–C18 (Aggregation)
 
-This script exists to make the protocol understandable in one afternoon.
+C19–C20 (Trust and Attestation)
+
 
 ---
