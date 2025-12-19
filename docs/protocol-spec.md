@@ -583,3 +583,48 @@ Acceptance is local and subjective; different verifiers MAY accept/reject the sa
 
 
 ---
+
+### C20 — Attested Trust / Third-party Acceptance (v0.1.x)
+
+A third party MAY attest that it verified cryptographic validity and evaluated a specific Trust Policy,
+producing a signed AcceptanceReceipt. This records verifiable decisions (accept/reject) without changing
+the underlying protocol objects.
+
+#### AcceptanceReceipt (Canonical Form)
+
+```ts
+AcceptanceReceipt {
+  version: "0.1",
+  receiptId: string,
+  targetKind: string,          // e.g. "FederatedAggregate" | "SignedFederatedAggregate"
+  targetHash: string,          // sha256(canonical(target))
+  policyName: string,
+  policyHash: string,          // sha256(canonical(TrustPolicy))
+  decision: "ACCEPT" | "REJECT",
+  reasons?: string[],
+  createdAt: ISODateTime
+}
+```
+### SignedAcceptanceReceipt (Canonical Form)
+
+SignedAcceptanceReceipt {
+  version: "0.1",
+  receipt: AcceptanceReceipt,
+  signature: string,
+  publicKey: string,
+  alg: string,
+  createdAt: ISODateTime
+}
+
+### Rules
+
+Receipt signatures MUST fail if any receipt field changes.
+
+policyHash MUST represent the canonical TrustPolicy used by the attester.
+
+targetHash MUST represent the canonical hash of the referenced target object (verifier recomputation).
+
+Acceptance is attestable; verification is cryptographic + optional local policy.
+
+
+---
