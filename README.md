@@ -1,6 +1,113 @@
 ✅ QKP-SDK — QuantumKey Protocol Software Development Kit
 
-QKP is a protocol for verifiable accountability across autonomous and federated systems.
+# QuantumKey Protocol (QKP)
+
+**QKP is a protocol for verifiable accountability across autonomous and federated systems.**
+
+QuantumKey Protocol provides a cryptographically verifiable structure for intent, execution, governance, and trust evaluation — without requiring centralized control.
+
+QKP is designed for:
+- Autonomous agents
+- Federated systems
+- Cross-organization execution
+- AI-driven decision-making
+- Auditable governance
+
+---
+
+## What QKP does
+
+QKP enables systems to:
+- Declare intent
+- Authorize actions
+- Execute contracts
+- Record accountability
+- Aggregate execution evidence
+- Evaluate trust policies
+- Produce signed third-party acceptance receipts
+
+All steps are **cryptographically verifiable** and **independently auditable**.
+
+---
+
+## What QKP is not
+
+- Not a blockchain
+- Not a financial network
+- Not a consensus protocol
+- Not an AI model
+
+QKP can integrate with those systems, but does not replace them.
+
+---
+
+## Quick start
+
+Run the reference flow to see the full protocol lifecycle:
+
+```bash
+node examples/reference-flow.js
+```
+
+Requirements
+
+Node.js 18+ (Node 20 recommended)
+
+No external dependencies
+
+No network access
+
+
+
+---
+
+Where to start reading
+
+👉 START HERE: docs/START_HERE.md
+
+📘 Reference Flow: examples/REFERENCE_FLOW.md
+
+📐 Protocol Specification: docs/protocol-spec.md
+
+🧪 Conformance Tests: docs/conformance.md
+
+📄 Whitepaper: docs/WHITEPAPER.md
+
+
+
+---
+
+Design principles
+
+Verifiability over trust
+
+Cryptography before policy
+
+Structure over interpretation
+
+Federation without centralization
+
+Accountability without surveillance
+
+
+
+---
+
+Status
+
+Core protocol features (C1–C20) are implemented and validated through executable conformance tests.
+
+
+---
+
+Authorship
+
+Author: Mihail Chiosa
+Collaborative Intelligence: Quantum Hammer
+Year: 2025
+
+---
+
 
 [![QKP Conformance](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml/badge.svg)](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml)
 
