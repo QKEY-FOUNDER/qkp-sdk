@@ -630,3 +630,8 @@ Acceptance is attestable; verification is cryptographic + optional local policy.
 
 
 ---
+
+See Appendix B of the Whitepaper for a complete cross-reference between
+specification sections, conformance cases, and reference implementations.
+
+---
