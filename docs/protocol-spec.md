@@ -1,5 +1,7 @@
 # QuantumKey Protocol (QKP) — Specification (Draft)
 
+Normative terminology for this specification is defined in docs/VOCABULARY.md.
+
 > **Protocol Version:** v0.1.0  
 > This specification defines the frozen core primitives of the QuantumKey Protocol.
 > Any backward-incompatible change requires a new major version.
