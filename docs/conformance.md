@@ -1,5 +1,8 @@
 # QKP Conformance Suite (v0)
 
+Each conformance case listed here is mapped to the Whitepaper Appendix B
+for specification and implementation traceability.
+
 This document defines minimal conformance cases for QKP-compatible implementations.
 
 A system is **QKP-compatible** if it can produce the objects defined in `docs/protocol-spec.md`
