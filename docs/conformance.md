@@ -244,3 +244,17 @@ Two intents with the same semantic content but different key order.
 3. Apply policy requiring 2 signatures + allowlist keys => MUST be accepted
 4. Apply stricter policy (minSignatures=3) => MUST be rejected
 5. Apply allowlist missing one key => MUST be rejected
+
+---
+
+## Case C20 — Attested Trust (AcceptanceReceipt)
+
+### Steps
+1. Create a valid SignedFederatedAggregate (C18)
+2. Verify cryptographic validity => MUST be true
+3. Evaluate TrustPolicy => MUST be accepted
+4. Create AcceptanceReceipt (targetHash + policyHash + decision)
+5. Sign receipt (auditor key) and verify => MUST be true
+6. Tamper receipt decision => verification MUST fail
+   
+---
