@@ -149,6 +149,10 @@ This SDK does not yet implement the full cryptographic engine — it provides th
 
 ---
 
+📘 Canonical terminology is defined in [docs/VOCABULARY.md](docs/VOCABULARY.md).
+
+---
+
 📦 Installation
 
 Option A — Browser / CDN (experimental)
