@@ -192,3 +192,5 @@ A living architecture for aligned intelligence
 - `conformance-c18.js` — Federated aggregation (multi-signature over same aggregate)
 
 - `conformance-c19.js` — Trust Policy Evaluation (accept/reject valid federated aggregate)
+
+- `conformance-c20.js` — Attested trust (AcceptanceReceipt signed by third party)
