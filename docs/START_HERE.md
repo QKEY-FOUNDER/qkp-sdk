@@ -73,6 +73,44 @@ QKP can integrate *with* those systems — it does not replace them.
 
 ---
 
+## Canonical External Narrative — How QKP Is Explained
+
+QuantumKey Protocol (QKP) exists to solve a structural problem that modern digital systems can no longer ignore: accountability does not scale in autonomous, federated, and cross-domain environments.
+
+Today’s systems — blockchains, AI agents, distributed services, governance platforms — execute actions continuously and independently, yet rely on implicit trust assumptions: trusted operators, trusted logs, trusted auditors, trusted institutions. These assumptions break under delegation, automation, and adversarial conditions.
+
+QKP introduces a different model.
+
+Instead of assuming trust, QKP produces verifiable evidence.
+
+Instead of retroactive audits, it creates accountability by construction.
+
+Instead of conflating technical validity with acceptance, it separates cryptographic truth from trust decisions.
+
+At its core, QKP is a protocol for verifiable accountability across autonomous and federated systems.
+
+It provides canonical data structures, cryptographic signatures, causal graphs, and aggregation mechanisms that allow any observer to answer, deterministically and independently:
+
+What was intended  
+Who intended it  
+What was authorized  
+What actually happened  
+How it was evaluated  
+Who accepted or rejected it, under which rules  
+
+QKP does not decide what should be trusted.
+
+It provides the evidence required to decide whether something can be trusted.
+
+This makes QKP fundamentally different from blockchains, DAOs, identity systems, or AI frameworks. It is not a ledger, not a consensus mechanism, and not a governance ideology. It is a protocol layer that sits beneath them, enabling accountability without central authority or implicit trust.
+
+By treating intent as a first-class primitive, binding identity to meaning, preserving causal structure, and allowing trust decisions to be signed and audited, QKP turns trust from a social assumption into a verifiable outcome.
+
+Trust is no longer implied.  
+It is demonstrated.
+
+---
+
 ## Repository structure (how to navigate)
 
 The QKP repository is intentionally structured to reflect the protocol’s separation of concerns.
