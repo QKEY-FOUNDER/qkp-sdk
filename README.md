@@ -1,5 +1,7 @@
 ✅ QKP-SDK — QuantumKey Protocol Software Development Kit
 
+Verifiable accountability for autonomous and federated systems.
+
 [![QKP Conformance](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml/badge.svg)](https://github.com/QKEY-FOUNDER/qkp-sdk/actions/workflows/conformance.yml)
 
 > **Status:** Stable Protocol — v0.1.0  
