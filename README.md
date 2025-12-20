@@ -4,7 +4,33 @@
 
 **QKP is a protocol for verifiable accountability across autonomous and federated systems.**
 
-QuantumKey Protocol provides a cryptographically verifiable structure for intent, execution, governance, and trust evaluation — without requiring centralized control.
+If you are an engineer, QKP gives you a deterministic and verifiable way to reason about intent, execution, and accountability in autonomous and federated systems.
+
+QKP does not rely on trusted logs, implicit permissions, or post-hoc explanations.  
+Every action is bound to declared intent, causally linked to execution, and verifiable end-to-end.
+
+The fastest way to understand QKP is to run the executable reference flow:
+
+node examples/reference-flow.js
+
+This reference flow demonstrates, in a single execution:
+
+- How intent is declared and signed  
+- How authorization is evaluated  
+- How execution produces verifiable receipts  
+- How accountability chains are constructed  
+- How aggregation preserves meaning  
+- How trust policies are applied  
+- How acceptance or rejection is attested  
+
+The reference flow is a **living, executable specification** of the protocol.
+
+If you can run this flow and understand its output, you understand the core of QKP.
+
+
+---
+
+## QuantumKey Protocol provides a cryptographically verifiable structure for intent, execution, governance, and trust evaluation — without requiring centralized control.
 
 QKP is designed for:
 - Autonomous agents
