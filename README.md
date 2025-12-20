@@ -196,32 +196,28 @@ Clone the repo and import modules locally.
 
 ---
 
-🧱 SDK Structure
+---
 
-qkp-sdk/
-│
-├── src/
-│   ├── index.js               # Entry point
-│   ├── identity/              # Identity primitives
-│   │     └── index.js
-│   ├── intent/                # Intent validation logic
-│   │     └── index.js
-│   ├── qie/                   # QuantumKey Interchange Envelope
-│   │     └── index.js
-│   ├── alignment/             # Alignment scoring skeleton
-│   │     └── index.js
-│   └── utils/                 # Shared helpers
-│         └── index.js
-│
-├── examples/
-│   └── README.md              # Usage examples
-│
-├── docs/
-│   └── architecture.md        # High-level protocol notes
-│
-├── package.json
-├── LICENSE
-└── README.md
+## SDK Structure (Canonical)
+
+The QKP SDK is organized around **explicit accountability primitives**, grouped by semantic responsibility rather than technical convenience.
+
+This structure is designed to be:
+- Navigable by intent
+- Auditable by construction
+- Extensible without central coordination
+
+### High-level layout
+
+qkp-sdk/ ├── src/ │   ├── graph/                 # Accountability graphs, chains, and aggregation │   │   ├── node.js │   │   ├── edge.js │   │   ├── chain.js │   │   ├── signed-chain.js │   │   ├── aggregate.js │   │   ├── windowed-aggregate.js │   │   ├── hier-aggregate.js │   │   ├── federated-aggregate.js │   │   ├── validate.js │   │   └── index.js │   │ │   ├── identity/              # Identity primitives (HID, AID, CID, SID) │   │   └── index.js │   │ │   ├── intent/                # Intent declaration and signing │   │   ├── signed-intent.js │   │   └── index.js │   │ │   ├── claims/                # Claims, revocations, and verification │   │   ├── claim.js │   │   ├── signed-claim.js │   │   ├── revocation.js │   │   ├── signed-revocation.js │   │   ├── verify-claim.js │   │   └── index.js │   │ │   ├── execution/             # Execution contracts and receipts │   │   ├── contract.js │   │   ├── execute.js │   │   ├── receipt.js │   │   ├── signed-receipt.js │   │   ├── replay.js │   │   ├── verify.js │   │   └── index.js │   │ │   ├── policy/                # Trust evaluation and attestation │   │   ├── evaluate.js │   │   ├── attestation.js │   │   └── index.js │   │ │   ├── governance/            # Proposals, votes, and tallies │   │   ├── proposal.js │   │   ├── signed-proposal.js │   │   ├── vote.js │   │   ├── signed-vote.js │   │   ├── tally.js │   │   └── index.js │   │ │   ├── alignment/             # Alignment and semantic scoring (extensible) │   │   └── index.js │   │ │   ├── crypto/                # Canonicalization, hashing, signatures │   │   ├── canonical.js │   │   ├── sha256.js │   │   ├── ed25519.js │   │   ├── signed.js │   │   ├── signed-ed25519.js │   │   └── index.js │   │ │   ├── utils/                 # Shared helpers │   │   └── index.js │   │ │   └── index.js               # SDK entry point │ ├── examples/ │   ├── reference-flow.js      # Executable end-to-end protocol flow │   ├── REFERENCE_FLOW.md      # Annotated walkthrough of the reference flow │   ├── conformance-c*.js      # Conformance test cases (C1–C20) │   └── README.md │ ├── docs/ │   ├── START_HERE.md │   ├── CANONICAL_STATEMENT.md │   ├── PROTOCOL_FREEZE_v1.0.md │   ├── GOVERNANCE_SNAPSHOT_v1.0.md │   ├── LAUNCH_READINESS.md │   ├── VERSIONING.md │   └── CONTRIBUTING.md │ ├── package.json ├── LICENSE └── README.md
+
+### Design note
+
+The SDK mirrors the protocol’s core principle:
+
+> **Nothing is implicit. Everything is attributable, verifiable, and composable.**
+
+If you can navigate this structure, you can reason about QKP.
 
 
 ---
