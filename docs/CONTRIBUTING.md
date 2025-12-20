@@ -34,6 +34,98 @@ If a contribution cannot be verified, reviewed, or attributed, it does not belon
 
 ---
 
+## Governance & Maintainer Model (Minimal, Non-Centralized)
+
+QuantumKey Protocol does not rely on a fixed core team or permanent authorities.
+
+Governance in QKP is **process-based, evidence-driven, and non-centralized**.
+
+This repository follows a minimal governance model designed to preserve protocol integrity without introducing hierarchy, capture, or informal power structures.
+
+### Maintainers
+
+Maintainers are contributors who have demonstrated sustained, high-quality participation over time.
+
+They are not appointed.
+They **emerge** through consistent, verifiable contributions.
+
+A maintainer is expected to:
+
+- Review pull requests for structural correctness
+- Ensure changes align with protocol invariants
+- Protect semantic and cryptographic consistency
+- Enforce contribution and conformance requirements
+- Act transparently and document decisions
+
+Maintainers do not have unilateral authority.
+Their role is custodial, not political.
+
+### Decision-Making
+
+Decisions in this repository are guided by the following principles:
+
+- **Evidence over opinion**
+- **Conformance over preference**
+- **Structure over authority**
+- **Documentation over memory**
+
+When disagreement occurs:
+
+- Arguments must reference code, specification, or conformance behavior
+- Decisions must be justified in writing
+- Rejection is acceptable; silent overrides are not
+
+If consensus cannot be reached, the default action is **to defer**, not to force a decision.
+
+### Protocol Integrity
+
+The QuantumKey Protocol is defined by:
+
+- Canonical data structures
+- Cryptographic validity
+- Explicit causality
+- Separation of verification and acceptance
+
+Any change that alters protocol semantics, invariants, or trust separation MUST:
+
+- Be accompanied by updated documentation
+- Be reflected in conformance tests
+- Preserve backward verifiability or explicitly document breaking changes
+
+No individual or group may redefine protocol meaning unilaterally.
+
+### Governance Scope
+
+This governance model applies to:
+
+- This repository
+- Reference implementations
+- Specifications and documentation
+
+It does not claim authority over:
+
+- External deployments
+- Independent forks
+- Downstream governance systems
+
+Forking is not failure.
+Forking is an explicit governance outcome.
+
+### Evolution
+
+This governance model is intentionally minimal.
+
+As the ecosystem evolves, governance MAY evolve — but only through:
+
+- Explicit proposals
+- Documented rationale
+- Verifiable agreement
+- Transparent revision history
+
+Governance changes must themselves be accountable.
+
+---
+
 ## Contributor Roles
 
 QKP defines contribution roles by **type of intent**, not status.
@@ -97,6 +189,216 @@ This role is expected to emerge through:
 
 Stewardship is not assigned.
 It is earned and recorded.
+
+---
+
+## Contribution Lifecycle (PR → Review → Evidence → Merge)
+
+QKP contributions follow a verifiable lifecycle that prioritizes evidence, intent, and accountability over authority or status.
+
+This lifecycle ensures that every accepted change can be audited, reproduced, and justified independently.
+
+### 1. Proposal (Pull Request)
+
+Every contribution begins with a Pull Request (PR).
+
+A valid PR MUST:
+- Clearly state the **intent** of the change
+- Reference the affected specification, code, or documentation
+- Be atomic and reviewable
+
+The PR description SHOULD answer:
+- What is being changed?
+- Why is this change necessary?
+- Which protocol invariant or design principle it preserves or improves?
+
+No contribution is accepted without an explicit intent declaration.
+
+---
+
+### 2. Review (Structural & Semantic)
+
+Reviews focus on **structure and evidence**, not authority or personal preference.
+
+Reviewers evaluate:
+- Canonical correctness
+- Structural consistency with existing primitives
+- Preservation of accountability and verifiability
+- Alignment with protocol design goals
+
+A reviewer MAY request:
+- Clarification of intent
+- Additional test cases
+- Reference to conformance coverage
+- Explicit trade-off documentation
+
+Approval is based on **what can be verified**, not who proposes the change.
+
+---
+
+### 3. Evidence (Executable or Referential)
+
+Before merging, contributions SHOULD provide evidence.
+
+Acceptable forms of evidence include:
+- Executable examples
+- Conformance tests
+- Deterministic reference flows
+- Explicit mapping to specification sections
+
+For protocol-affecting changes, at least one of the following is REQUIRED:
+- A new or updated conformance case
+- A reference flow demonstrating the change
+- A clear proof that existing invariants remain intact
+
+Evidence is treated as a first-class artifact.
+
+---
+
+### 4. Merge (Accountable Acceptance)
+
+A merge represents an **explicit acceptance decision**, not implicit approval.
+
+By merging a PR, maintainers attest that:
+- The contribution was reviewed
+- The intent is understood
+- The evidence is sufficient
+- The change preserves protocol integrity
+
+Merge decisions are reversible only through new, explicit contributions.
+
+There are no silent changes.
+
+---
+
+### 5. Post-Merge Accountability
+
+After merging:
+- The change becomes part of the verifiable history
+- Future contributors can reference it as precedent
+- Any disagreement must be expressed as a new proposal
+
+QKP does not erase decisions.
+It records them.
+
+---
+
+### Lifecycle Invariant
+
+At every stage, the following invariant must hold:
+
+> No contribution is accepted without explicit intent, reviewable structure, and verifiable evidence.
+
+This lifecycle replaces trust in maintainers with trust in process.
+
+
+---
+
+## Maintainer Rotation & Stewardship
+
+QuantumKey Protocol does not assign permanent maintainers.
+
+Stewardship is **time-bound**, **evidence-based**, and **revocable**.
+
+There are no lifetime roles, no implicit authority, and no centralized ownership of the protocol.
+
+All stewardship exists to preserve protocol integrity — not control.
+
+---
+
+### Stewardship Principles
+
+Maintainers are expected to act as **protocol stewards**, not gatekeepers.
+
+Stewardship is governed by the following principles:
+
+- Evidence over reputation  
+- Process over personality  
+- Rotation over permanence  
+- Accountability over authority  
+- Transparency over discretion  
+
+A maintainer is trusted only insofar as their actions remain verifiable and aligned with protocol principles.
+
+---
+
+### Becoming a Maintainer
+
+A contributor may become a maintainer by demonstrating **sustained, verifiable contribution**, including:
+
+- Multiple accepted contributions over time
+- Consistent adherence to canonical structures
+- Active participation in reviews and discussions
+- Respect for protocol scope and non-goals
+- Clear attribution of intent in all proposals
+
+There is no automatic promotion.
+
+Stewardship is **recognized**, not granted.
+
+---
+
+### Time-Bound Stewardship
+
+Maintainer roles are **explicitly time-scoped**.
+
+A maintainer serves for a defined period, after which stewardship must be reaffirmed or rotated.
+
+This ensures:
+
+- Fresh review perspectives
+- Reduced concentration of influence
+- Continuous protocol alignment
+- Resistance to social capture
+
+Rotation is considered a **healthy protocol behavior**, not a failure.
+
+---
+
+### Stewardship Responsibilities
+
+Maintainers are responsible for:
+
+- Reviewing pull requests for structural correctness
+- Ensuring conformance tests remain valid
+- Preserving canonical definitions and invariants
+- Rejecting changes that introduce implicit behavior
+- Documenting decisions with explicit reasoning
+
+Maintainers MUST NOT:
+
+- Introduce hidden state or discretionary rules
+- Merge unverifiable or ambiguous changes
+- Override process based on authority
+- Act outside documented protocol scope
+
+---
+
+### Revocation & Rotation
+
+Stewardship may be rotated or revoked if:
+
+- Contributions repeatedly violate protocol principles
+- Decisions lack verifiable justification
+- Canonical invariants are weakened
+- Process transparency is compromised
+- Community trust is lost based on evidence
+
+Revocation is a **procedural outcome**, not a punishment.
+
+All decisions SHOULD be explainable, reviewable, and attributable.
+
+---
+
+### Final Note on Governance
+
+QuantumKey Protocol governance is not hierarchical.
+
+It is **procedural**.
+
+Authority does not persist — **evidence does**.
+
+Stewardship exists to protect the protocol, not to own it.
 
 ---
 
