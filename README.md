@@ -30,7 +30,7 @@ If you can run this flow and understand its output, you understand the core of Q
 
 ---
 
-## QuantumKey Protocol provides a cryptographically verifiable structure for intent, execution, governance, and trust evaluation — without requiring centralized control.
+**QuantumKey Protocol provides a cryptographically verifiable structure for intent, execution, governance, and trust evaluation — without requiring centralized control.
 
 QKP is designed for:
 - Autonomous agents
