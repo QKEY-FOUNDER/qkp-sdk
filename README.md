@@ -206,9 +206,115 @@ This structure is designed to be:
 
 ### High-level layout
 
-qkp-sdk/ ├── src/ │   ├── graph/                     # Accountability graphs, chains, aggregation │   │   ├── node.js │   │   ├── edge.js │   │   ├── chain.js │   │   ├── signed-chain.js │   │   ├── aggregate.js │   │   ├── windowed-aggregate.js │   │   ├── hier-aggregate.js │   │   ├── federated-aggregate.js │   │   ├── validate.js │   │   └── index.js │   │ │   ├── identity/                  # Identity primitives (HID, AID, CID, SID) │   │   └── index.js │   │ │   ├── intent/                    # Intent declaration and signing │   │   ├── signed-intent.js │   │   └── index.js │   │ │   ├── claims/                    # Claims, revocations, verification │   │   ├── claim.js │   │   ├── signed-claim.js │   │   ├── revocation.js │   │   ├── signed-revocation.js │   │   ├── verify-claim.js │   │   └── index.js │   │ │   ├── execution/                 # Execution contracts and receipts │   │   ├── contract.js │   │   ├── execute.js │   │   ├── receipt.js │   │   ├── signed-receipt.js │   │   ├── replay.js │   │   ├── verify.js │   │   └── index.js │   │ │   ├── policy/                    # Trust evaluation and attestation │   │   ├── evaluate.js │   │   ├── attestation.js │   │   └── index.js │   │ │   ├── governance/                # Proposals, votes, tallies │   │   ├── proposal.js │   │   ├── signed-proposal.js │   │   ├── vote.js │   │   ├── signed-vote.js │   │   ├── tally.js │   │   └── index.js │   │ │   ├── alignment/                 # Alignment & semantic scoring (extensible) │   │   └── index.js │   │ │   ├── crypto/                    # Canonicalization, hashing, signatures │   │   ├── canonical.js │   │   ├── sha256.js │   │   ├── ed25519.js │   │   ├── signed.js │   │   ├── signed-ed25519.js │   │   └── index.js │   │ │   ├── utils/                     # Shared helpers │   │   └── index.js │   │ │   └── index.js                   # SDK entry point │ ├── examples/ │   ├── reference-flow.js          # Executable end-to-end protocol flow │   ├── REFERENCE_FLOW.md          # Annotated walkthrough │   ├── conformance-c*.js          # Conformance tests (C1–C20) │   └── README.md │ ├── docs/ │   ├── START_HERE.md │   ├── CANONICAL_STATEMENT.md │   ├── PROTOCOL_FREEZE_v1.0.md │   ├── GOVERNANCE_SNAPSHOT_v1.0.md │   ├── LAUNCH_READINESS.md │   ├── VERSIONING.md │   └── CONTRIBUTING.md │ ├── package.json ├── LICENSE └── README.md
-
-
+```text
+qkp-sdk/
+├── src/
+│   ├── graph/
+│   │   ├── node.js
+│   │   ├── edge.js
+│   │   ├── chain.js
+│   │   ├── signed-chain.js
+│   │   ├── aggregate.js
+│   │   ├── windowed-aggregate.js
+│   │   ├── hier-aggregate.js
+│   │   ├── federated-aggregate.js
+│   │   ├── validate.js
+│   │   └── index.js
+│   │
+│   ├── identity/
+│   │   └── index.js
+│   │
+│   ├── intent/
+│   │   ├── signed-intent.js
+│   │   └── index.js
+│   │
+│   ├── claims/
+│   │   ├── claim.js
+│   │   ├── signed-claim.js
+│   │   ├── revocation.js
+│   │   ├── signed-revocation.js
+│   │   ├── verify-claim.js
+│   │   └── index.js
+│   │
+│   ├── execution/
+│   │   ├── contract.js
+│   │   ├── execute.js
+│   │   ├── receipt.js
+│   │   ├── signed-receipt.js
+│   │   ├── replay.js
+│   │   ├── verify.js
+│   │   └── index.js
+│   │
+│   ├── policy/
+│   │   ├── evaluate.js
+│   │   ├── attestation.js
+│   │   └── index.js
+│   │
+│   ├── governance/
+│   │   ├── proposal.js
+│   │   ├── signed-proposal.js
+│   │   ├── vote.js
+│   │   ├── signed-vote.js
+│   │   ├── tally.js
+│   │   └── index.js
+│   │
+│   ├── alignment/
+│   │   └── index.js
+│   │
+│   ├── crypto/
+│   │   ├── canonical.js
+│   │   ├── sha256.js
+│   │   ├── ed25519.js
+│   │   ├── signed.js
+│   │   ├── signed-ed25519.js
+│   │   └── index.js
+│   │
+│   ├── utils/
+│   │   └── index.js
+│   │
+│   └── index.js
+│
+├── examples/
+│   ├── reference-flow.js
+│   ├── REFERENCE_FLOW.md
+│   ├── conformance-c1-c2.js
+│   ├── conformance-c3.js
+│   ├── conformance-c4.js
+│   ├── conformance-c5.js
+│   ├── conformance-c6.js
+│   ├── conformance-c7.js
+│   ├── conformance-c8.js
+│   ├── conformance-c9.js
+│   ├── conformance-c10.js
+│   ├── conformance-c11.js
+│   ├── conformance-c12.js
+│   ├── conformance-c13.js
+│   ├── conformance-c14.js
+│   ├── conformance-c15.js
+│   ├── conformance-c16.js
+│   ├── conformance-c17.js
+│   ├── conformance-c18.js
+│   ├── conformance-c19.js
+│   ├── conformance-c20.js
+│   └── README.md
+│
+├── docs/
+│   ├── START_HERE.md
+│   ├── CANONICAL_STATEMENT.md
+│   ├── PROTOCOL_FREEZE_v1.0.md
+│   ├── GOVERNANCE_SNAPSHOT_v1.0.md
+│   ├── LAUNCH_READINESS.md
+│   ├── VERSIONING.md
+│   └── CONTRIBUTING.md
+│
+├── .github/
+│   └── workflows/
+│       └── conformance.yml
+│
+├── package.json
+├── LICENSE
+└── README.md
+```
 ### Design note
 
 The SDK mirrors the protocol’s core principle:
