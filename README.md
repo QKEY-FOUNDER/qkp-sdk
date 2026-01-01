@@ -41,6 +41,41 @@ QKP is designed for:
 
 ---
 
+## Protocol Authority (Baseline v0.1)
+
+This SDK implements the **authoritative** QuantumKey Protocol (QKP) specification hosted in:
+
+- Protocol repository (source of truth):  
+  `qkey-founder/quantumkey-protocol`
+
+The protocol is currently frozen at:
+
+- **Baseline:** v0.1  
+- **Freeze date:** 2026-01-01  
+
+Canonical authority documents:
+
+- Baseline definition  
+  `docs/BASELINE_V0.1.md`
+
+- Protocol freeze declaration  
+  `docs/PROTOCOL_FREEZE_v0.1.md`
+
+- Versioning rules  
+  `docs/VERSIONING.md`
+
+- Change history  
+  `CHANGELOG.md`
+
+This SDK MUST NOT redefine protocol truth.  
+It provides executable reference flows and tests demonstrating protocol behavior.
+
+Mapping between protocol baseline and SDK implementation:
+
+- `docs/MAPPING_TO_PROTOCOL_BASELINE_V0.1.md`
+
+---
+
 ## What QKP does
 
 QKP enables systems to:
