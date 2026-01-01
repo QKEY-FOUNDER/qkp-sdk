@@ -337,5 +337,3 @@ Protocol baseline changes are controlled only by the protocol repository (not th
 
 History does not change.
 Implementations evolve.
-
----
