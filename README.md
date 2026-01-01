@@ -239,9 +239,10 @@ This structure is designed to be:
 - Auditable by construction
 - Extensible without central coordination
 
-### High-level layout
 
+## Repository Structure
 ```text
+
 qkp-sdk/
 ├── src/
 │   ├── graph/
