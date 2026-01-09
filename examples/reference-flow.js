@@ -1,12 +1,16 @@
-// QKP Reference Flow — Living Specification
-// This file demonstrates the canonical end-to-end flow of the QuantumKey Protocol.
-// It is normative: changes here imply protocol-level changes.
+/*
+ QKP Reference Flow — Living Specification
+ This file demonstrates the canonical end-to-end flow of the QuantumKey Protocol.
+ It is normative: changes here imply protocol-level changes.
+*/
 
 import {
   crypto,
   graph,
   policy
 } from "../src/index.js";
+
+import { generateEvidence } from "../src/evidence/generateEvidence.js";
 
 async function run() {
   console.log("=== QKP Reference Flow ===");
@@ -117,7 +121,7 @@ async function run() {
   // 7. Attestation
   // ---------------------------------------------------------------------------
 
-  const receipt = await policy.createAcceptanceReceipt({
+  const acceptanceReceipt = await policy.createAcceptanceReceipt({
     target: signedAggregate,
     policyName: "default",
     decision: policyResult.accepted ? "ACCEPT" : "REJECT",
@@ -125,6 +129,29 @@ async function run() {
   }, auditorKeys);
 
   console.log("AcceptanceReceipt created");
+
+  // ---------------------------------------------------------------------------
+  // 8. Evidence generation (this turns execution into scientific proof)
+  // ---------------------------------------------------------------------------
+
+  await generateEvidence({
+    flow: "reference-flow",
+    version: "v0.1",
+    artifacts: {
+      intent,
+      signedIntent,
+      claim,
+      signedClaim,
+      contractNode,
+      receiptNode,
+      link,
+      aggregate: signedAggregate,
+      policyDecision: policyResult,
+      acceptanceReceipt
+    }
+  });
+
+  console.log("Evidence package generated");
 
   console.log("=== Reference Flow completed successfully ===");
 }
